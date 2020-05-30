@@ -1,0 +1,147 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN" >
+<HTML>
+ <HEAD>
+  <TITLE>Getting Started with WebExtenders for ASP.NET</TITLE>
+  <META NAME="GENERATOR" Content="Microsoft Visual Studio 7.0">
+  <style type="text/css"> <!-- body { font-family: Verdana, Arial, Helvetica, sans-serif; font-size: 8pt; color: #666666}
+	p { font-family: Verdana, Arial, Helvetica, sans-serif; font-size: 8pt; color: #666666 ; line-height: 12pt}
+	td { font-family: Verdana, Arial, Helvetica, sans-serif; font-size: 8pt; color: #666666 }
+	a:link { color:#6699FF; text-decoration:none; font-family: Verdana, Arial, Helvetica, sans-serif; font-size: 8pt}
+	a:visited { color:#6699FF; text-decoration:none; font-family: Verdana, Arial, Helvetica, sans-serif; font-size: 8pt}
+	a:active { color:#6699FF; text-decoration:underline; font-family: Verdana, Arial, Helvetica, sans-serif; font-size: 8pt}
+	a:hover { color:#6699FF; text-decoration:underline; font-family: Verdana, Arial, Helvetica, sans-serif; font-size: 8pt}
+	BR.page  { page-break-after: always }
+	--></style>
+ <meta https-equiv="Content-Type" content="text/html; charset=iso-8859-1"></HEAD>
+ <BODY bgcolor="#ffffff">
+  
+<h1><b><font size="4">Getting Started with WebExtenders for ASP.NET</font></b> </h1>
+  
+<P>WebExtenders for ASP.NET from <a href="https://www.wikipedia.org" target="_blank">TMG 
+  Development Ltd</a> extend the capabilities of various Web Server controls which 
+  ship with the Microsoft Visual Studio .NET design environment. Each component 
+  in the library adds a different behavior to controls when they are rendered 
+  by the clients browser.</P>
+<P>At designtime, they use Visual Studio's <i>extender provider</i> mechanism 
+  to add new properties to controls such as Button, LinkButton, Textbox etc. <br>
+  If you are unfamiliar with this concept, see the following link: <br> 
+  <a href="https://msdn.microsoft.com/library/default.asp?url=/library/en-us/vbcon/html/vbconextenderobjects.asp" target="_blank">https://msdn.microsoft.com/library/default.asp?url=/library/en-us/vbcon/html/vbconextenderobjects.asp</a> for
+  further information. At runtime, each typically sends  a small amount of javascript
+  to the browser which alters the controls behavior 
+  accordingly. For example:</P>
+<ul>
+  <li>The ConfirmProvider component adds the <i>ConfirmText</i> property to all 
+    Button, HyperLink, ImageButton and LinkButton controls on a Web Form. Any 
+    control whose ConfirmText property has been set, invokes the javascript <i>confirm</i> 
+    function in response to the user clicking the control; the specified text 
+    is displayed in a modal OK/Cancel dialog box.</li>
+  <li>The StatusProvider component adds the <i>StatusText</i> property to numerous 
+    controls including the Web Form itself. Any control whose StatusText property 
+    has been set alters the javascript <i>status</i> property as the user moves 
+    the mouse over the control; the specified text is displayed in the status 
+    bar. When the StatusText is set on the Web Form, this determines the <i>defaultStatus</i> 
+    for the clients browser (that is, the text which appears by default in the 
+    status bar).</li>
+  <li>The AlertProvider component adds the <i>AlertText</i> property to button controls, 
+    invoking the javascript <i>alert</i> function in response to the user clicking 
+    the control.</li>
+  <li>The MaskProvider component adds the <i>MaskExpression</i> property to TextBox controls. 
+    The mask is applied in response to text entry, with disallowed characters 
+    being ignored.</li>
+</ul>
+<p> WebExtenders are easily integrated into exisiting Web Forms without the need 
+  to replace controls with more specialized versions. The extra functionality 
+  is simply attached at runtime and as we will see, two or more WebExtenders can 
+  combine their functionality when used to extend the same Web Server control.</p>
+<h3><strong>Overview</strong></h3>
+  
+<P>In this document we will outline the steps necessary to extend both a Web Form 
+  (Sytem.Web.UI.Page) and a LinkButton (System.Web.UI.WebControls.LinkButton) 
+  Web Server control using the Microsoft Visual Studio .NET IDE, before taking 
+  a look at the results when rendered by the clients browser.</P>
+<P>We're going to create a very simple web application that consists of a typical 
+  data-bound web page and then show how we add a StatusProvider component, extending 
+  the properties of the controls on the form as well as the form itself. Then 
+  we will add a ConfirmProvider component, thus extending the LinkButton control 
+  with a second new property.</P>
+<h3>Using WebExtenders at Design Time</h3>
+  
+<p>To start with, we've created a basic page based around a DataGrid Web Server 
+  control. It has already been configured with a source of data and some basic 
+  formatting to improve its appearance. The OleDbConnection, OleDbDataAdapter 
+  and typed DataSet components in the component tray will populate the DataGrid 
+  at runtime. Their configuration is unrelated to use of the WebExtender components 
+  however, so we will not discuss it any further here.</p>
+<p>In addition to the four columns which correspond to columns within the DataSet 
+  (Title, FirstName, LastName &amp; HomePhone) we have added a 'Delete' button 
+  column. We will use the StatusProvider to extend the links in this column to 
+  show custom text messages in the clients web-browser at runtime.</p>
+<p><b>Note</b> that in order to be able to extend the links in this column, the 
+  column must be converted to a 'Template Column'.</p>
+<p><img src="webextenders_intro_howto_images/Initial%20Form.gif" width="702" height="606"></p>
+<p>The first step is to add a StatusProvider component. Dragging it straight onto 
+  the form from the Toolbox causes it to appear in the component tray:</p>
+<p><img src="webextenders_intro_howto_images/StatusProvider%20added.gif" width="702" height="606"></p>
+<p>Before we customize the links in the DataGrid, lets consider the simpler case 
+  of the Web Form (System.Web.UI.Page). StatusProvider extends the form to allow 
+  a means of specifying the <i>defaultStatus</i> for the browser. Selecting the 
+  form from the dropdown list in the Properties Window, reveals:</p>
+<p><img src="webextenders_intro_howto_images/Form%20props.gif" width="387" height="236"></p>
+<p>Highlighted in the 'Misc' section, is the StatusText property which has been 
+  provided by the StatusProvider component. This is where we can specify the text 
+  which will appear in the status bar of the clients browser. Because this is 
+  a form, the text will appear <i>until</i> the user drives over a link in the 
+  browser.</p>
+<p>The StatusProvider component extends any other link controls on the form in 
+  the same way (although of course their text would not appear until the user 
+  drives over them).</p>
+<p> Before we can specify the status bar text for a control which is hosted by 
+  the DataGrid control, we need to enter <i>template editing mode</i>. Right-clicking 
+  anywhere on the surface of the DataGrid and selecting 'Edit Template' &gt;&gt; 
+  'Columns[X]' from the popup menu causes the DataGrid to alter its appearance, 
+  as shown below:</p>
+<p><img src="webextenders_intro_howto_images/Editing%20template.gif" width="702" height="606"></p>
+<p>Notice that the Web Form designer has created a LinkButton control so that 
+  we may edit its properties. As before, the Properties Window shows the new property 
+  which has been supplied by the StatusProvider:</p>
+<p><img src="webextenders_intro_howto_images/LinkButton%20props.gif" width="332" height="329"></p>
+<p> In this example, <i>Delete this employee</i> would seem to be an appropriate 
+  message. Having entered it into the property window, we'll conclude our template 
+  editing session: right-clicking the DataGrid once more and selecting 'End Template 
+  Editing' returns the DataGrid to its original state. Let's now add a ConfirmProvider 
+  component from the Toolbox. Dragging it onto the form as before:</p>
+<p><img src="webextenders_intro_howto_images/ConfirmProvider%20added.gif" width="702" height="606"></p>
+<p>Going back into template editing mode and viewing the LinkButton properties 
+  again, we see that there is now a second extended property:</p>
+<p><img src="webextenders_intro_howto_images/LinkButton%20props2.gif" width="487" height="329"></p>
+<p> Setting the new property to <i>Are you sure you want to delete this employee?</i> 
+  will give us an appropriate 'last chance' confirmation dialog, with the option 
+  to abort the delete operation.</p>
+<h3>Running the Web Application</h3>
+<p>That's all that needs to be done at designtime. All that remains now is to 
+  run the application by hitting F5 to see the results...</p>
+<p><img src="webextenders_intro_howto_images/Default%20status.gif" width="636" height="488"></p>
+<p>... note the default status bar text before the cursor is moved over a link.</p>
+<p><img src="webextenders_intro_howto_images/Link%20status.gif" width="636" height="488"></p>
+<p>Moving the pointer over the record belonging to the hapless Nancy Davolio alters 
+  the status bar text accordingly. Her continued employment hangs by a thread 
+  ...</p>
+<p><img src="webextenders_intro_howto_images/Confirm%20dlg.gif" width="718" height="488"></p>
+<p>Thanks to the ConfirmProvider however, she gets a reprieve ... cancelling the 
+  dialog prevents a postback, and her subsequent removal from the company database.</p>
+<h3><strong>Summary</strong></h3>
+  
+<p>We've shown how WebExtenders can extend the capabilities of Web Server controls, 
+  and how they are used within the design environment. We have also seen how two 
+  WebExtenders can extend the behavior of the same Web Server control to give 
+  even more flexibility at runtime.</p>
+<p>To try a <strong>free trial version</strong> of WebExtenders please visit the 
+  WinformReports website at <a href="https://www.winformreports.co.uk" target="_blank"> 
+  https://www.winformreports.co.uk</a></p>
+  
+<p> <!-- #BeginDate format:Am1 -->July 15, 2019<!-- #EndDate --> <br>
+   &copy; 2002-2019 <a href="https://www.wikipedia.org" target="_blank">TMG 
+    Development Ltd </a>
+ </p>
+ </BODY>
+</HTML>

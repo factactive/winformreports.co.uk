@@ -1,0 +1,157 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN" >
+<HTML>
+ <HEAD>
+  <TITLE>Readme - Welcome to PrintForm.NET</TITLE>
+  <META NAME="GENERATOR" Content="Microsoft Visual Studio 7.0">
+  <style type="text/css"> <!-- body { font-family: Verdana, Arial, Helvetica, sans-serif; font-size: 8pt; color: #666666}
+	p { font-family: Verdana, Arial, Helvetica, sans-serif; font-size: 8pt; color: #666666 ; line-height: 12pt}
+	td { font-family: Verdana, Arial, Helvetica, sans-serif; font-size: 8pt; color: #666666 }
+	a:link { color:#6699FF; text-decoration:none; font-family: Verdana, Arial, Helvetica, sans-serif; font-size: 8pt}
+	a:visited { color:#6699FF; text-decoration:none; font-family: Verdana, Arial, Helvetica, sans-serif; font-size: 8pt}
+	a:active { color:#6699FF; text-decoration:underline; font-family: Verdana, Arial, Helvetica, sans-serif; font-size: 8pt}
+	a:hover { color:#6699FF; text-decoration:underline; font-family: Verdana, Arial, Helvetica, sans-serif; font-size: 8pt}
+	--></style>
+ </HEAD>
+ <BODY bgcolor="#ffffff">
+  <h1><b><font size="4">A Tax Form Application in VB.NET<BR>
+    </font></b><B><FONT size="2">Illustrating the Form Printing Features of 
+     PrintForm.NET </FONT></B>
+  </h1>
+  <P>&nbsp;</P>
+  <P><img src="Readme%20Images/Cascade%20FrontPage.jpg" width="303" height="231"></P>
+  <h3><strong></strong>&nbsp;</h3>
+  <H3><STRONG>Overview</STRONG></H3>
+  <P>This sample demonstrates how&nbsp;to use&nbsp;<STRONG>PrintForm</STRONG> and <STRONG>
+    PrintChainManager</STRONG> to create a finished application with multiple 
+   forms printed as a single print job.</P>
+  <P>In its simplest form PrintForm is designed to print a single Windows Form, or 
+   part thereof - so what do you do if you want to present a number of forms to 
+   the user and then have them all printed out as a single print job? Obviously 
+   you can add a PrintForm control to each form and then call Print on each one in 
+   turn, but this will result in each page being printed as a separate print job; 
+   and it also means you can't print preview them in one go either.</P>
+  <P>What is called for is a solution that allows you to chain together the output 
+   of multiple PrintDocument-based components, passing the .NET <STRONG>PrintController</STRONG>
+   and <STRONG>PrinterSettings</STRONG> between them so that they all print their 
+   output into the same print job. We have included this functionality in the <STRONG>
+    PrintChaining </STRONG>assembly supplied with PrintForm.</P>
+  <P>The PrintChaining assembly contains the interface definition for <STRONG>IChainedDocument</STRONG>, 
+   and the PrintDocument-based component <STRONG>PrintChainManager</STRONG>. When 
+   PrintChainManager is supplied with a list of objects that implement the 
+   interface IChainedDocument (PrintForm implements this, as do all the components 
+   in our PrintAdapters printing library, see <a href="https://www.winformreports.co.uk/features_pa.htm" target="_blank">
+    https://www.winformreports.co.uk/features_pa.htm</a>) it does the necessary 
+   work to chain them all together when printing.</P>
+  <h3><strong>Application Architecture</strong></h3>
+  <P>The TaxForm application consists of a main form (frmMain), and a set of 
+   subsidiary forms (frmInstructions, frmTaxForm1, frmTaxForm2). In the Form Load 
+   event handler each of these is reparented to a panel on frmMain using a call to 
+   the following subroutine, which removes their borders and TopLevel setting, and 
+   sets them to fill the client area of the new Parent:</P>
+  <P>
+   ' Reparent the form to the parentControl and setup standard options<br>
+   Private Sub SetupTaxFormPage(ByVal form As Form, ByVal parentControl As 
+   Control)<br>
+   &nbsp;&nbsp;form.TopLevel = False<br>
+   &nbsp;&nbsp;form.FormBorderStyle = FormBorderStyle.None<br>
+   &nbsp;&nbsp;form.Parent = parentControl<br>
+   &nbsp;&nbsp;form.Dock = DockStyle.Fill<br>
+   &nbsp;&nbsp;form.Visible = True<br>
+   End Sub<br>
+  </P>
+  <P>Each form has been created to mirror a real tax form page, based on the pdf 
+   file of the UK Income Tax return for 2019 ( <a href="https://www.inlandrevenue.gov.uk/pdfs/2002_03/tax_return/sa100.pdf" target="_blank">
+    https://www.inlandrevenue.gov.uk/pdfs/2002_03/tax_return/sa100.pdf</a>). Where 
+   complex formatted text was required on screen, we used a <strong>RichTextBox </strong>
+   control with the corresponding RTF files produced by cutting and pasting from 
+   Adobe Acrobat into Wordpad, then saving as an RTF file. Each of these RTF files 
+   is included in the application as an embedded resource (include in project 
+   using 'Add Existing Item...', then set the <strong>Build Action</strong> property 
+   to <strong>Embedded Resource</strong>).</P>
+  <P>To load the RTF embedded resource into the corresponding RichTextBox control 
+   at runtime, we use code similar to:</P>
+  <P>
+   Me.rtbInstructions0.LoadFile(GetType(frmInstructions).Module.Assembly.GetManifestResourceStream("<strong>TaxForm.frmInstructions.rtbInstructions0.rtf</strong>"), 
+   RichTextBoxStreamType.RichText)</P>
+  <P><STRONG><EM>Note</EM></STRONG>: the key point here is to get the fully 
+   qualified name of the embedded resource (highlighted in the above code line) 
+   exactly right. A handy tip for checking what you should use is to open the <STRONG>
+    ILDASM.exe</STRONG> tool that comes with Visual Studio, point it at your 
+   complied executable, and then double click on the <STRONG>MANIFEST</STRONG> section. 
+   This lists, among other things, the fully qualified names of all the embedded 
+   resources.</P>
+  <P>The final code for the main application is some logic to show a specific 
+   child form when a 'toolbar' label is clicked. Since the child forms 
+   (frmTaxForm1, frmTaxForm2 etc) have all been reparented to the same panel, and 
+   set DockStyle.Fill, the only one which will be visible is the one at the top of 
+   the Z-Order. The Z-Order of contained controls in .NET is governed by their 
+   position in the container's Controls collection, so to bring a given child form 
+   to the top we move it to the start of the Controls collection as follows:</P>
+  <P>
+   Me.pnlFormParent.Controls.SetChildIndex(theForm, 0)</P>
+  <P>Now we have a main application with a number of data entry 'pages' which we 
+   can make visible inside a Panel on the main form. Because each of the child 
+   forms has been set AutoScroll = True, they are scrollable when placed inside 
+   the smaller containing Panel.<br>
+  </P>
+  <h3>
+   <strong>Adding Printing Support</strong></h3>
+  <P>Having completed the design of the data entry forms we now need to make them 
+   printable. This is actually the simplest part of the whole process:</P>
+  <ol>
+   <li>
+    Add a <strong>PrintForm</strong>
+   component to each of the child forms
+   <li>
+    Add a <strong>PrintChainManager</strong>
+   to the main form
+   <li>
+    Add the following code to the main form's <strong>Load</strong> event handler, 
+    to create the child forms, reparent them to our display Panel (as described 
+    earlier) and add their PrintForm reference to the <STRONG>PrintChainManager.Documents
+    </STRONG>collection. (Note: the calls to _forms.Add are to enable us to relate 
+    a PrintForm reference to its containing Form for use in the toolbar code which 
+    switches the Z-Order of the child forms):<br>
+    <br>
+    Dim page0 As frmInstructions = New frmInstructions()<br>
+    Me.SetupTaxFormPage(page0, Me.pnlFormParent)<br>
+    _forms.Add(page0.PrintForm1, page0)<br>
+    PrintChainManager1.Documents.Add(page0.PrintForm1)<BR>
+    <BR>
+    Dim page1 As frmTaxForm1 = New frmTaxForm1()<br>
+    Me.SetupTaxFormPage(page1, Me.pnlFormParent)<br>
+    _forms.Add(page1.PrintForm1, page1)<br>
+    PrintChainManager1.Documents.Add(page1.PrintForm1)<BR>
+    <BR>
+    Dim page2 As frmTaxForm2 = New frmTaxForm2()<br>
+    Me.SetupTaxFormPage(page2, Me.pnlFormParent)<br>
+    _forms.Add(page2.PrintForm1, page2)<br>
+    PrintChainManager1.Documents.Add(page2.PrintForm1)<BR>
+   <li>
+    Add a standard .NET&nbsp; <strong>PrintPreviewDialog</strong> component to the 
+    main form. Set its <strong>Document</strong> property to the <strong>PrintChainManager</strong>
+   reference
+   <li>
+    Now add a menu item click handler to call <strong>PrintPreviewDialog.ShowDialog</strong>:<br>
+    <br>
+    Me.PrintPreviewDialog1.ShowDialog()<br>
+   </li>
+  </ol>
+  <h3><strong>The Finished Product</strong></h3>
+  <p>The main application:</p>
+  <p><img src="Readme%20Images/TaxForm%20Main.gif" width="428" height="365"></p>
+  <p>And the corresponding print preview... because PrintForm renders the form 
+   contents in a resolution independent manner the result is a high quality 
+   printout, without any of the effort of writing all the printing code yourself:</p>
+  <p><img src="Readme%20Images/TaxForm%20Preview.gif" width="512" height="281"></p>
+  <p>For more information about PrintForm, and other .NET solutions, please visit 
+   the WinformReports website at <a href="https://www.winformreports.co.uk" target="_blank">
+    https://www.winformreports.co.uk</a></p>
+  <p>
+   <!-- #BeginDate format:Am1 --> June 6, 2019<!-- #EndDate -->
+   <br>
+   &copy; 2002-2019 <a href="https://www.wikipedia.org" target="_blank">TMG 
+    Development Ltd </a>
+  </p>
+ </BODY>
+</HTML>

@@ -1,0 +1,120 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<html xmlns="https://www.w3.org/1999/xhtml" xmlns:xhtml2rtf=
+"https://www.lutecia.info/download/xmlns/xhtml2rtf">
+<head>
+<link href="readme.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<h1>PrintAdapters Readme</h1>
+<p>30-Mar-2019</p>
+<p>PrintAdapters</p>
+<p>Windows Control Printing Components (Full Version) 2.1.0.4.</p>
+<p>PrintAdapters is a set of easy to use adapter classes to facilitate the 
+ printing of TreeView, ListView and RichTextBox controls directly from your .NET 
+ application. PrintAdapters also provides an adapter for printing DataTable 
+ contents with the same styling options as the ListView adapter.</p><br />
+<p><b>New Features in Version 2.1.0.4</b></p>
+<ul>
+<li>Fix: Updated licensing code for Vista compatability.</li>
+</ul><br />
+<p><b>New Features in Version 2.1.0.3</b></p>
+<ul>
+<li>Fix: PrintTreeView now honors custom node ForeColor in print.</li>
+</ul><br />
+<p><b>New Features in Version 2.1.0.2</b></p>
+<ul>
+<li>Fix: All PrintAdapters - fix incorrect adapter OnBeginPrint reset logic on subsequent print runs.</li>
+</ul><br />
+<p><b>New Features in Version 2.1.0.1</b></p>
+<ul>
+<li>Fix: PrintListView fix partial printing of column headers at foot of page when there isn't enough room for any actual data rows.</li>
+<li>Fix: PrintListView fix null ref in CreateTableStyleFromListView due to uninitalised renderer.</li>
+<li>Fix: PrintRichTextBox correctly restore Graphics.Clip after print.</li>
+<li>Fix: Includes TMGDevelopment.Shared.dll 1.0.0.4 fix: accounting for PrintChainManager.Gap value in remaining space on page.</li>
+<li>Fix: Includes TMGDevelopment.Shared.dll 1.0.0.4 fix: first PrintChainManager.DocumentChanged event no longer raised from PrintChainManager.OnBeginPrint, happens during PrintChainManager.OnPrintPage only now.</li>
+</ul><br />
+<p><b>New Features in Version 2.1.0.0</b></p>
+<ul>
+<li>Enh: Unified namespaces across PrintAdapters, PrintForm and PrintControls.</li>  
+<li>Enh: PrintChaining renamed to TMGDevelopment.Shared and more common classes added.</li>  
+<li>Enh: FxCop etc rules applied.</li>
+<li>Fix: VS2019 compatability.</li>
+</ul><br />
+<p><b>New Features in Version 2.0.1.3</b></p>
+<ul>
+<li>Fix: <b>PrintListView</b> <b>RowStyle</b> applied to wrong row on subsequent pages</li>  
+<li>Fix: <b>PrintListView</b> wrong <b>CellStyle.TextAlignment</b> used on printing first column</li>
+</ul><br />
+<p><b>New Features in Version 2.0.1.2</b></p>
+<ul>
+<li>Fix: Correct problem that prevented specifying custom <b>Column</b> widths 
+in <b>TableStyle</b></li>  
+<li>New: Add <b>Measure</b>() fn to <b>PrintListView</b>
+returning full x,y table dimensions</li>
+<li>New: Add <b>Measure</b>() fn to <b>PrintDataTable</b>
+returning full x,y table dimensions</li>
+<li>Fix: Correction to <b>PrintlistView.Draw</b>() to use correct margin 
+size internally </li>
+</ul><br />
+<p><b>New Features in Version 2.0.1.0</b></p>
+<ul>
+<li>New: PrintListView <b>grid printing</b>
+support, mirroring gridline settings of ListView control </li>
+<li>New: TableStyle CellStyle <b>TextAlign</b>
+property </li>
+<li>New: TableStyle CellStyle <b>StringTrimming</b> property</li>
+</ul><br />
+<p><b>New Features in Version 2.0.0.0</b></p>
+<ul>
+<li>New: Complete <b>Help file</b> <b>documentation</b>
+of PrintAdapters and Printing namespaces</li>
+<li>New: Help file PrintAdapters <b>technical howto </b> covering TableStyles </li>
+<li>New: Samples (see 'Getting Started' below for details) SimpleTree, SimpleListView, SimpleDataTable, SimpleRichTextBox, AdvancedTree, AdvancedListView, AdvancedRichTextBox, ListViewStyleCodeSamples. Sample application <b>CustomerQuote</b> - showing how to chain the output of various PrintAdapters together using <b>PrintChainManager</b></li>
+<li>New: PrintDataTable now also prints DataViews</li>
+<li>Fix: PrintListView; checkboxes not moved with column if columns reordered</li>
+<li>Fix: PrintListView; column order check failed when no columns defined</li>
+<li>New: PrintListView now prints columns in the correct order if the user has reordered them</li>
+<li>Enh: Added null value checking to the parameters passed to RowStyle, TableStyle</li>
+<li>Fix: PrintListView now only refreshes TableStyle from the ListView (if appropriate) when the TableStyle is requested, not at creation time, which was overrwriting custom settings in some scenarios</li>
+<li>New: Added BorderStyle static methods BorderNone &amp; BorderSingle to supply common borders</li>
+<li>Enh: Made TableStyle.ColumnHeaderDefault visible, and serializable, and renamed it to ColumnDefault</li>
+<li>New: Added ResetTableStyle etc to PrintListView for designer support</li>
+<li>Fix: Commented out obsolete TableStyle ctors</li>
+<li>Enh: <b>PrintChainManager</b> and <b>IPrintChaining</b> moved to PrintChaining.dll and shared between PrintAdapters and PrintForm</li>
+</ul><br />
+<p><b>Feature Overview</b></p>
+<p>All adapters integrate with the Visual Studio .NET design environment and the .NET printing architecture. This means that you can design the style of your printed output in the VS.NET designer, without any coding, and then print or print preview using the standard .NET PrintPreviewDialog classes.</p>
+<p>PrintListView and PrintDataTable:</p>
+<ul>
+<li>Custom print styles can be designed in VS.NET or modified programmatically at runtime. Alternatively PrintListView can automatically create a set of style settings which accurately mirror the current settings of the ListView.</li>
+<li>Pre-defined styles can be applied to the printed output via the VS.NET designer.</li>
+<li>The controls are derived from PrintDocument, so you can use it in place of PrintDocument in the .NET framework to simply print out a ListView across multiple pages.</li>
+<li>Custom printouts are supported. The <b>Draw</b> method allows you to specify the available rectangular space - and the control will render as many of the rows of data as it can into that space. Calling Draw again for subsequent pages will continue rendering until all rows have been printed.</li>
+</ul>
+<p>PrintTreeView:</p>
+<ul>
+<li>The starting node(s) to be printed can be set by the user or automatically detected (<b>PrintTreeView.AutoDetectRootNodes</b> property). Starting/root nodes can be manually specifed via the <b>PrintTreeView.RootNodes</b>property.</li>
+<li>The Tree can be printed fully expanded or in its current state of expansion at the time of printout by setting the <b>PrintTreeView.PrintTreeExpanded</b>property.</li>
+<li>PrintTreeView is derived from PrintDocument, so you can use it in place of PrintDocument in the .NET framework to simply print out a tree across multiple pages.</li>
+<li>Custom printouts are supported. PrintTreeView's <b>PrintTree</b> method allows you to specify the available rectangular space - and PrintTreeView will render as many of the TreeView's nodes as it can into that space. Calling PrintTree again for subsequent pages will continue rendering the tree until all nodes have been printed.</li>
+</ul>
+<p>PrintRichTextBox:</p>
+<ul>
+<li>PrintRichTextBox is derived from PrintDocument, so you can use it in place of PrintDocument in the .NET framework to simply print out a RichTextBox across multiple pages.</li>
+<li>Custom printouts are supported. PrintRichTextBox's <b>Draw</b> method allows you to specify the available rectangular space - and PrintRichTextBox will render as much of the RichTextBox's contents as it can into that space. Calling Draw again for subsequent pages will continue rendering the RichTextBox until all the contents have been printed.</li>
+</ul>
+<h2>Installation Instructions</h2>
+<p>You must be logged in as an <b>Administrator</b> when you install PrintAdapters.NET. To begin the installation process, run the setup.exe program included with your installation files. After the installation process has completed you will need to add the PrintAdapters components to your Toolbox in Visual Studio.NET using the following procedure:</p><p>1. Open the Visual Studio .NET editor.<br/>
+2. Right click on the 'General' tab of the Toolbox, and select 'Customise Toolbox...'. (You may alternatively add it to the Windows Forms tab, or create a new tab).<br/>
+3. Select the '.NET Framework Components' tab of the Customise Toolbox Dialog and scroll down until you find 'Barcode' with a namespace of TMGDevelopment.Windows.Forms. Check this, highlight the row and click the namespace column header to sort by namespace. Check all the other controls in the TMGDevelopment.Windows.Forms namespace and click OK.</p>
+<p>You should now be able to drag any PrintAdapters component from the General Tab of the Toolbox onto your Form.</p>
+<h2>Getting Started</h2>
+<p>PrintAdapters includes a number of sample applications, but probably  
+the best place to get started is with the Getting Started document in the help file, and 
+the accompanying GettingStarted project installed under the PrintAdapters entry on your 
+Start menu.</p>
+<p>If you have any problems using PrintAdapters, please contact us 
+via our website at <a href="https://www.winformreports.co.uk/contactus.asp">https://www.winformreports.co.uk/contactus.asp</a></p>
+<p>PrintAdapters.NET &#169; 2019-2019 TMG Development Ltd</p>
+</body>
+</html>

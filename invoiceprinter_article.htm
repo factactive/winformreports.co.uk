@@ -1,0 +1,479 @@
+<html><!-- #BeginTemplate "/Templates/winformreports.dwt" --><!-- DW6 -->
+<head>
+<!-- #BeginEditable "doctitle" --> 
+<title>WinForm Reports for .NET - PrintForm Invoice Printer Sample</title>
+<!-- #EndEditable --> 
+<meta https-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+<script language="JavaScript1.2" src="https://www.qarbon.com/viewlet.js"></script>
+<link href="wf.css" rel="stylesheet" type="text/css">
+</head>
+
+<body bgcolor="#FFFFFF">
+<table width="100%" border="0" cellpadding="0" cellspacing="0">
+  <tr> 
+    <td> 
+      <table width="100%" border="0" cellspacing="0" cellpadding="0" background="title%20background.gif">
+        <tr> 
+          <td><img src="winform%20reports%20title.gif" width="292" height="24" alt="Winform Reports for .NET" align="middle"></td>
+          <td><img src="shim.gif" width="1" height="35"></td>
+        </tr>
+        <tr> 
+          <td background="greydot.gif"><img src="shim.gif" width="1" height="1"></td>
+          <td></td>
+        </tr>
+      </table>
+    </td>
+  </tr>
+  <tr valign="top"> 
+    <td> 
+      <table width="100%" border="0" cellspacing="0" cellpadding="0">
+        <tr> 
+          <td align="left" valign="top"> 
+            <table width="140" border="0" cellspacing="0" cellpadding="0">
+              <tr> 
+                <td background="greydot.gif"><img src="shim.gif" width="1" height="7"></td>
+                <td bgcolor="#DEE7ED"></td>
+                <td background="greydotsh.gif"><img src="shim.gif" width="1" height="7"></td>
+              </tr>
+              <tr> 
+                <td background="greydot.gif" colspan="3"><img src="shim.gif" width="1" height="1"></td>
+              </tr>
+              <tr> 
+                <td background="greydot.gif"><img src="shim.gif" width="1" height="20"></td>
+                <td bgcolor="#F0F4F7">&nbsp;&nbsp;<img src="bullet.gif" width="6" height="7">&nbsp;<a href="index.htm">Home</a></td>
+                <td background="greydotsh.gif"><img src="shim.gif" width="1" height="20"></td>
+              </tr>
+              <tr> 
+                <td background="greydot.gif" colspan="3"><img src="shim.gif" width="1" height="1"></td>
+              </tr>
+              <tr> 
+                <td background="greydot.gif"><img src="shim.gif" width="1" height="20"></td>
+                <td bgcolor="#F0F4F7">&nbsp;&nbsp;<img src="bullet.gif" width="6" height="7">&nbsp;<font color="#666666"><a href="productcomparison.htm">Product Comparison</a></font></td>
+                <td background="greydotsh.gif"><img src="shim.gif" width="1" height="20"></td>
+              </tr>
+              <tr> 
+                <td background="greydot.gif" colspan="3"><img src="shim.gif" width="1" height="1"></td>
+              </tr>
+              <tr> 
+                <td background="greydot.gif"><img src="shim.gif" width="1" height="20"></td>
+                <td bgcolor="#F0F4F7">&nbsp;&nbsp;<img src="bullet.gif" width="6" height="7">&nbsp;<font color="#666666">Products</font></td>
+                <td background="greydotsh.gif"><img src="shim.gif" width="1" height="20"></td>
+              </tr>
+              <tr> 
+                <td background="greydot.gif"><img src="shim.gif" width="1" height="20"></td>
+                <td bgcolor="#F0F4F7">&nbsp;&nbsp;&nbsp;&nbsp;<img src="bullet.gif" width="6" height="7">&nbsp;<a href="features_pf.htm">PrintForm
+                    .NET</a></td>
+                <td background="greydotsh.gif"><img src="shim.gif" width="1" height="20"></td>
+              </tr>
+              <tr> 
+                <td background="greydot.gif"><img src="shim.gif" width="1" height="20"></td>
+                <td bgcolor="#F0F4F7">&nbsp;&nbsp;&nbsp;&nbsp;<img src="bullet.gif" width="6" height="7">&nbsp;<a href="features_pc.htm">PrintControls 
+                  .NET</a></td>
+                <td background="greydotsh.gif"><img src="shim.gif" width="1" height="20"></td>
+              </tr>
+              <tr> 
+                <td background="greydot.gif"><img src="shim.gif" width="1" height="20"></td>
+                <td bgcolor="#F0F4F7">&nbsp;&nbsp;&nbsp;&nbsp;<img src="bullet.gif" width="6" height="7">&nbsp;<a href="features_pa.htm">PrintAdapters
+                    .NET</a></td>
+                <td background="greydotsh.gif"><img src="shim.gif" width="1" height="20"></td>
+              </tr>
+              <tr> 
+                <td background="greydot.gif"><img src="shim.gif" width="1" height="20"></td>
+                <td bgcolor="#F0F4F7">&nbsp;&nbsp;&nbsp;&nbsp;<img src="bullet.gif" width="6" height="7">&nbsp;<a href="features_pp.htm">PrintPreviewDialog
+                    .NET</a></td>
+                <td background="greydotsh.gif"><img src="shim.gif" width="1" height="20"></td>
+              </tr>
+              <tr> 
+                <td background="greydot.gif"><img src="shim.gif" width="1" height="20"></td>
+                <td bgcolor="#F0F4F7">&nbsp;&nbsp;&nbsp;&nbsp;<img src="bullet.gif" width="6" height="7">&nbsp;<a href="features_loc.htm">Localizer
+                    ASP.NET</a></td>
+                <td background="greydotsh.gif"><img src="shim.gif" width="1" height="20"></td>
+              </tr>
+              <tr> 
+                <td background="greydot.gif"><img src="shim.gif" width="1" height="20"></td>
+                <td bgcolor="#F0F4F7">&nbsp;&nbsp;&nbsp;&nbsp;<img src="bullet.gif" width="6" height="7">&nbsp;<a href="features_we.htm">WebExtenders
+ASP.NET</a></td>
+                <td background="greydotsh.gif"><img src="shim.gif" width="1" height="20"></td>
+              </tr>
+              <tr> 
+                <td background="greydot.gif" colspan="3"><img src="shim.gif" width="1" height="1"></td>
+              </tr>
+              <tr> 
+                <td background="greydot.gif"><img src="shim.gif" width="1" height="20"></td>
+                <td bgcolor="#F0F4F7">&nbsp;&nbsp;<img src="bullet.gif" width="6" height="7">&nbsp;Downloads</td>
+                <td background="greydotsh.gif"><img src="shim.gif" width="1" height="20"></td>
+              </tr>
+              <tr> 
+                <td background="greydot.gif" colspan="3"><img src="shim.gif" width="1" height="1"></td>
+              </tr>
+              <tr> 
+                <td background="greydot.gif"><img src="shim.gif" width="1" height="20"></td>
+                <td bgcolor="#F0F4F7">&nbsp;&nbsp;&nbsp;&nbsp;<img src="bullet.gif" width="6" height="7">&nbsp;<a href="downloads.htm">Free Trial Versions </a></td>
+                <td background="greydotsh.gif"><img src="shim.gif" width="1" height="20"></td>
+              </tr>
+              <tr> 
+                <td background="greydot.gif" colspan="3"><img src="shim.gif" width="1" height="1"></td>
+              </tr>
+              <tr> 
+                <td background="greydot.gif"><img src="shim.gif" width="1" height="20"></td>
+                <td bgcolor="#F0F4F7">&nbsp;&nbsp;&nbsp;&nbsp;<img src="bullet.gif" width="6" height="7">&nbsp;<a href="Updates/ViewUpdates.aspx">Upgrades</a></td>
+                <td background="greydotsh.gif"><img src="shim.gif" width="1" height="20"></td>
+              </tr>
+              <tr> 
+                <td background="greydot.gif" colspan="3"><img src="shim.gif" width="1" height="1"></td>
+              </tr>
+              <tr> 
+                <td background="greydot.gif"><img src="shim.gif" width="1" height="20"></td>
+                <td bgcolor="#F0F4F7">&nbsp;&nbsp;<img src="bullet.gif" width="6" height="7">&nbsp;<a href="documents.htm">Documents
+                    &amp; Papers</a></td>
+                <td background="greydotsh.gif"><img src="shim.gif" width="1" height="20"></td>
+              </tr>
+              <tr> 
+                <td background="greydot.gif" colspan="3"><img src="shim.gif" width="1" height="1"></td>
+              </tr>
+              <tr> 
+                <td background="greydot.gif"><img src="shim.gif" width="1" height="20"></td>
+                <td bgcolor="#F0F4F7">&nbsp;&nbsp;<img src="bullet.gif" width="6" height="7">&nbsp;<a href="purchase.htm">Purchase</a></td>
+                <td background="greydotsh.gif"><img src="shim.gif" width="1" height="20"></td>
+              </tr>
+              <tr> 
+                <td background="greydot.gif" colspan="3"><img src="shim.gif" width="1" height="1"></td>
+              </tr>
+              <tr> 
+                <td background="greydot.gif"><img src="shim.gif" width="1" height="20"></td>
+                <td bgcolor="#F0F4F7">&nbsp;&nbsp;<img src="bullet.gif" width="6" height="7">&nbsp;<a href="support/index.htm">Support Index</a> </td>
+                <td background="greydotsh.gif"><img src="shim.gif" width="1" height="20"></td>
+              </tr>
+              <tr> 
+                <td background="greydot.gif" colspan="3"><img src="shim.gif" width="1" height="1"></td>
+              </tr>
+              
+              <tr> 
+                <td background="greydot.gif"><img src="shim.gif" width="1" height="20"></td>
+                <td bgcolor="#F0F4F7">&nbsp;&nbsp;<img src="bullet.gif" width="6" height="7">&nbsp;<a href="press.htm">Press 
+                  Releases </a> </td>
+                <td background="greydotsh.gif"><img src="shim.gif" width="1" height="20"></td>
+              </tr>
+              <tr> 
+                <td background="greydot.gif" colspan="3"><img src="shim.gif" width="1" height="1"></td>
+              </tr>
+              <tr> 
+                <td background="greydot.gif"><img src="shim.gif" width="1" height="20"></td>
+                <td bgcolor="#F0F4F7">&nbsp;&nbsp;<img src="bullet.gif" width="6" height="7">&nbsp;<a href="contactus.asp">Contact 
+                  Us</a> <a href="contactus.asp"><img src="mail.gif" width="15" height="11" border="0" align="absbottom"></a></td>
+                <td background="greydotsh.gif"><img src="shim.gif" width="1" height="20"></td>
+              </tr>
+              <tr> 
+                <td background="greydot.gif" colspan="3"><img src="shim.gif" width="1" height="1"></td>
+              </tr>
+              <tr> 
+                <td background="greydot.gif"><img src="shim.gif" width="1" height="20"></td>
+                <td bgcolor="#F0F4F7">&nbsp;&nbsp;<img src="bullet.gif" width="6" height="7">&nbsp;<a href="privacy.htm">Privacy 
+                  Statement</a> </td>
+                <td background="greydotsh.gif"><img src="shim.gif" width="1" height="20"></td>
+              </tr>
+              <tr> 
+                <td background="greydot.gif" colspan="3"><img src="shim.gif" width="1" height="1"></td>
+              </tr>
+              <tr> 
+                <td background="greydot.gif"><img src="shim.gif" width="1" height="20"></td>
+                <td height="19" bgcolor="#F0F4F7">
+                  <table width="140" cellpadding= "2" cellspacing="0" border="0" bgcolor="#F0F4F7">
+                    <tr bgcolor="#F0F4F7" align="center" valign="top">
+                      <td ><img src="shim.gif" width="4" height="1"></td>
+                      <td align="left" > 
+                        <form method="post" action="/maillist.asp" name="frmMail">
+                          Enter your email and click 'Join List' to be kept up 
+                          to date with latest releases and Tips and Tricks...
+                          <table width="100%" border="0" cellspacing="0" cellpadding="0">
+  <tr>
+    <td><input type="text" name="email" size="10"></td>
+    <td><input name="cmdSubmit" type="image" src="s_joinlist_btn.jpg" align="right" width="45" height="15" border="0"></td>
+  </tr>
+</table>
+                              <br>
+                              <input type="hidden" name="sendmail" value="sendmail">
+                              <input type="hidden" name="product" value="GeneralInfo">
+                        </form>
+                      </td>
+                    </tr>
+                  </table>
+                </td>
+                <td background="greydotsh.gif"><img src="shim.gif" width="1" height="20"></td>
+              </tr>
+              <tr> 
+                <td background="greydot.gif" colspan="3"><img src="shim.gif" width="1" height="1"></td>
+              </tr>
+              <tr> 
+                <td background="greydot.gif"><img src="shim.gif" width="1" height="20"></td>
+                <td bgcolor="#F0F4F7"> 
+                  <div align="center">&nbsp;<img src="shim.gif" width="1" height="5" align="top"><br>
+                    <a href="javascript:openViewlet('/viewlets/Demo_viewlet.html',859,690);"><img src="tour%20ticket.jpg" width="131" height="85" alt="Click here to take the PrintForm.NET Tour" border="0"></a></div>
+                </td>
+                <td background="greydotsh.gif"><img src="shim.gif" width="1" height="20"></td>
+              </tr>
+              <tr> 
+                <td background="greydot.gif"><img src="shim.gif" width="1" height="20"></td>
+                <td bgcolor="#F0F4F7"> 
+                  <table width="100%" border="0" cellspacing="0" cellpadding="0">
+                    <tr> 
+                      <td><img src="shim.gif" width="5" height="8"></td>
+                      <td valign="top">Note: the PrintForm <a href="javascript:openViewlet('/viewlets/Demo_viewlet.html',859,690);">walkthrough</a> 
+                        requires a <a href="https://java.sun.com/j2se/1.3/" target="_blank">Java 
+                        Plug-in</a> of version 1.3.1 or above. To view the walkthrough 
+                        now click <a href="javascript:openViewlet('/viewlets/Demo_viewlet.html',859,690);">here</a>.</td>
+                      <td><img src="shim.gif" width="8" height="8"></td>
+                    </tr>
+                  </table>
+                </td>
+                <td background="greydotsh.gif"><img src="shim.gif" width="1" height="20"></td>
+              </tr>
+              <tr> 
+                <td background="greydot.gif" colspan="3"><img src="shim.gif" width="1" height="1"></td>
+              </tr>
+              <tr> 
+                <td background="greydot.gif"><img src="shim.gif" width="1" height="10"></td>
+                <td><img src="shim.gif" width="170" height="10"></td>
+                <td background="greydotsh.gif"><img src="shim.gif" width="1" height="10"></td>
+              </tr>
+              <tr> 
+                <td background="greydot.gif" colspan="3"><img src="shim.gif" width="1" height="1"></td>
+              </tr>
+              <tr> 
+                <td background="greydot.gif"><img src="shim.gif" width="1" height="10"></td>
+                <td><img src="shim.gif" width="10" height="10"></td>
+                <td background="greydotsh.gif"><img src="shim.gif" width="3" height="10"></td>
+              </tr>
+              <tr> 
+                <td background="greydot.gif"><img src="shim.gif" width="1" height="20"></td>
+                <td> 
+                  <div align="center"><a href="https://www.wikipedia.org" target="_blank"><img src="tmglogo.gif" width="124" height="31" border="0" alt="Go to TMG Development Ltd Website"></a></div>
+                </td>
+                <td background="greydotsh.gif"><img src="shim.gif" width="1" height="20"></td>
+              </tr>
+              <tr> 
+                <td background="greydot.gif"><img src="shim.gif" width="1" height="20"></td>
+                <td><img src="shim.gif" width="10" height="20"></td>
+                <td background="greydotsh.gif"><img src="shim.gif" width="1" height="20"></td>
+              </tr>
+              <tr> 
+                <td background="greydot.gif"><img src="shim.gif" width="1" height="20"></td>
+                <td> 
+                  <div align="center"><img src="MCSD.jpg" width="112" height="53" alt="Microsoft Certified Partner"></div>
+                </td>
+                <td background="greydotsh.gif"><img src="shim.gif" width="1" height="20"></td>
+              </tr>
+              <tr> 
+                <td background="greydot.gif"><img src="shim.gif" width="1" height="5"></td>
+                <td><img src="shim.gif" width="10" height="5"></td>
+                <td background="greydotsh.gif"><img src="shim.gif" width="1" height="5"></td>
+              </tr>
+              <tr> 
+                <td background="greydot.gif" colspan="3"><img src="shim.gif" width="1" height="1"></td>
+              </tr>
+            </table>
+          </td>
+          <td align="left" valign="top"> <!-- #BeginEditable "Main Page Contents Go Here" --> 
+            <table width="100%" border="0" cellspacing="0" cellpadding="0" align="left">
+              <tr> 
+                <td><img src="shim.gif" width="10" height="10"></td>
+                <td></td>
+                <td></td>
+              </tr>
+              <tr> 
+                <td><img src="shim.gif" width="10" height="70"></td>
+                <td valign="top"> 
+                  <div align="right">Click here for a <a href="invoiceprinter_article_print.htm" target="_blank">Printable Page</a> or download a <a href="InvoicePrinter_Article.pdf">.pdf 
+                    version</a> of this article (98KB)<a href="https://www.adobe.com/products/acrobat/readstep2.html" target="_blank">
+                    <img src="getacro.gif" width="88" height="31" align="top" border="0"></a> 
+                    <br>
+                  </div>
+                </td>
+                <td></td>
+              </tr>
+              <tr> 
+                <td></td>
+                <td valign="top" bgcolor="#FFFFFF"> 
+                  <p><b><span style='font-size:13.5pt'>Printing in .NET with PrintForm, 
+                    a Simple Invoice Printing Application</span></b></p>
+                  <div> 
+                    <p>The sample code for this article is available at <span style='color:#0033CC'><a href="https://www.winformreports.co.uk/invoiceprinter.zip">https://www.winformreports.co.uk/invoiceprinter.zip</a></span><br>
+                      You will also need the trial version of PrintForm which is available for download from <a href="https://www.winformreports.co.uk/downloads.htm">https://www.winformreports.co.uk/downloads.htm</a></p>
+                    <p><b><span style='font-size:12.0pt'>Introduction</span></b></p>
+                    <p>In this white paper we will explore the process of adding 
+                      printing features to an application, discussing both the 
+                      use of the standard .NET framework printing components (PrintDocument, 
+                      PrintPreviewDialog etc) and the use of PrintForm .NET from 
+                      TMG Development Ltd.</p>
+                    <p>PrintForm .NET helps the software developer add printing 
+                      support to an application quickly and easily with practically 
+                      no coding - by rendering a printed page whose layout and 
+                      content is based on the Windows .NET Forms they have already 
+                      designed and coded using Visual Studio .NET.</p>
+                    <p><b><span style='font-size:12.0pt'>Background</span></b></p>
+                    <p>Typically the developer has two paths open to them when 
+                      adding printing support to an application: 1) Use one of 
+                      the 'established' reporting tools for .NET, such as Crystal 
+                      Reports or ActiveReports, or 2) write a custom printing 
+                      solution using the basic printing framework provided in 
+                      the .NET runtime. Later on in this article we will discuss 
+                      a third option based on printing Windows Forms using GDI+ 
+                      and the PrintForm .NET component.</p>
+                    <p>Reporting tools are typically designed for producing reports 
+                      based on repeating lines of data, and coercing them into 
+                      producing a custom printing solution can be a difficult 
+                      task as they all have their own quirks and a definite 'learning 
+                      curve'. Add to this the inflexibility of their page layout 
+                      options and developers are often left with the task of writing 
+                      a custom printing solution from scratch.</p>
+                    <p>The .NET runtime provides a printing framework based on 
+                      a group of classes in the System.Drawing.Printing namespace. 
+                      The most commonly used of these are <strong>PrintDocument</strong>, 
+                      <strong>PrintPreviewDialog</strong>, <strong>PageSetupDialog</strong> 
+                      and <strong>PrintDialog</strong> which provide the bulk 
+                      of the core functionality required in a typical application.</p>
+                    <p>The framework&nbsp; <b>PrintDocument </b>component can 
+                      be used in two main ways: </p>
+                    <ul type=square>
+                      <li>
+                        <p>For simple printing requirements you would add the 
+                          <b>PrintDocument</b> component to a Windows Form, then 
+                          add programming logic in your application that&nbsp;renders 
+                          the printed page using <b>GDI+</b> graphics&nbsp;functions&nbsp;in 
+                          the <b>PrintPage</b> event handler.</p>
+                      </li>
+                      <li>
+                        <p>For more complex printing you would derive a new component 
+                          from the <b>PrintDocument</b> component and override 
+                          the <b>PrintPage</b> event. This new component could 
+                          then form the basis of your own custom printing solution, 
+                          which you&nbsp;could reuse in future applications. </p>
+                      </li>
+                    </ul>
+                    <p>These features are discussed in detail in the online help, 
+                      and in the Microsoft Quickstart Samples at <a href="https://www.gotdotnet.com" target="_blank">https://www.gotdotnet.com</a>.</p>
+                    <p>While the custom printing solution is without doubt the 
+                      most flexible, it can be a time consuming process producing 
+                      an aesthetically pleasing layout from low level GDI+ calls 
+                      of the form 'draw a line from A to B', 'draw text at C', 
+                      'draw a circle to simulate a radio button' etc. In some 
+                      cases it can be very difficult to persuade controls you 
+                      may be using on your Form e.g. a Chart,&nbsp;BarCode, Map 
+                      etc to draw themselves at all in your printout.</p>
+                    <p>At this point we introduce PrintForm..! PrintForm .NET 
+                      is derived 
+                      from PrintDocument - this means it can be dropped onto the 
+                      design surface of a Windows Form in Visual Studio .NET and 
+                      linked seamlessly with the core .NET printing framework. 
+                      PrintForm is able to directly render any <b>GDI+</b> based 
+                      control onto the <b>Graphics</b> surface provided by either 
+                      the <b>Printer</b> or the <b>PrintPreviewControl</b>. It 
+                      also includes support for the majority of controls based 
+                      on legacy Win32 technology (including the '.NET' controls 
+                      like TextBox, ComboBox etc which are thin wrappers onto 
+                      their Win32 counterparts).</p>
+                    <p><b><span style='font-size:12.0pt'>Sample Application</span></b></p>
+                    <p>To demonstrate the process of adding printing support to 
+                      an application using PrintForm we will produce a simple 
+                      invoice printing application. We will assume that the data 
+                      to be printed would be supplied by a buisiness logic layer 
+                      component and will omit this for the purpose of this example.</p>
+                    <p><b>Step 1</b>: Create a new Windows Forms application in 
+                      Visual Studio .NET. In this example we'll use VB.NET, but 
+                      PrintForm .NET works with any .NET compatible language.</p>
+                    <p><b>Step 2</b>: Add a <b>Panel</b> called Panel1 to the 
+                      Form. This Panel will 
+                      hold the controls we wish to appear on the printed page. 
+                      To allow us to make it more like the size of a page set 
+                      the Panel's <b>AutoScroll</b> property true and set it's 
+                      <b>AutoScrollMinSize</b> to 500, 1000 - this gives us a 
+                      viewport onto a scrolling region approximately the size 
+                      of a standard piece of printer paper.</p>
+                    <p class=figuredesc><img width=658 height=573 id="_x0000_i1025"
+src=InitialForm.gif border=1><br>
+                      Figure 1: Adding an AutoScrolling Panel to Represent the 
+                    Invoice</p>
+                    <p><b>Step 3</b>: Now we  add Windows Forms controls to 
+                      the scrolling Panel1  as required to make up the layout 
+                      of the invoice. Note that where we intend to customise the content of the control at runtime we use the default text of the control to hold the format string that will be used in a call to <strong>String.Format()</strong>.<br>
+                      At this point we also add the necessary printing controls - the standard .NET <strong>PrintPreviewControl</strong>, and two printing components from the <strong>TMGDevelopment.Windows.Forms</strong> namespace: <strong>PrintForm</strong> and <strong>PrintChainManager</strong>, by dragging them into the form from the Toolbox. </p>
+                    <p class=figuredesc><img width=658 height=573 id="_x0000_i1026"
+src=DesignInvoice.gif border=1><br>
+                    Figure 2: Designing the Invoice Layout</p>
+                    <p><b>Step 4</b>:  Now we tell <b>PrintForm</b> which controls 
+                      it is going to print by setting its <b>BodyContainer</b> 
+                      property to the Panel1, and then tell the <b>PrintPreviewDialog</b> 
+                      which PrintDocument it is going to render by setting its 
+                      <b>Document</b> property to PrintForm1. Remember from the 
+                      Background discussion above that PrintForm is derived from 
+                      PrintDocument so the PrintPreviewDialog is quite happy to 
+                      have a reference to PrintForm instead of PrintDocument. 
+                      In fact the Visual Studio IDE will even prompt you with 
+                      all the components on the form which are derived from PrintDocument - in this case it will list both PrintForm1 and PrintChainManager1.</p>
+                    <p><strong>Step 5</strong>: Test a single page printout. Add a button to the form to trigger a call to Me.PrintPreviewDialog1.ShowDialog() and run the app. Here is the resulting print preview:</p>
+                    <p><img src="InvoicePreview1.gif" width="653" height="595"> <br>
+                      Figure 3: Single Page Print Preview </p>
+                    <p><b>Step 6</b>: Now we will add code using the PrintChainManager to print multiple invoices in the same print run. As mentioned earlier PrintChainManager is also derived from PrintDocument and manages the process of composing the output of multiple PrintDocuments into a single printout. All that is required for an individual PrintDocument to participate in this process is for it to implement the interface TMGDevelopment.Printing.IChainedDocument. All of the TMGDevelopment printing components (PrintForm, PrintAdapters, PrintControls) do and you can easily add support to your own PrintDocuments by implementing the interface as documented in the help files. Add the following code to the Print button click handler:</p>
+                    <p class="codefont"> Dim i, count As Integer<br>
+count = 5<br>
+' add the required number of documents in<br>
+For i = 1 To count<br>
+&nbsp;&nbsp;Me.PrintChainManager1.Documents.Add(Me.PrintForm1)<br>
+Next<br>
+' setup the print preview dialog<br>
+Me.PrintPreviewDialog1.Document = Me.PrintChainManager1<br>
+Me.PrintPreviewDialog1.ShowDialog()                    </p>
+                    <p>Finally, we add some code to populate the controls with the contents of each invoice as they are being printed. We won't go into the detail of this as it is a simple matter of creating some random data for customer name, address and items purchased, you can download the accompanying sample code if you want to see the details. </p>
+                    <p>The most important thing to note about this page contents setup step is that it is performed in response to the PrintChainManager <strong>ChainPrintingPage</strong> event, which is called immediately before PrintChainManager prints a page. There is also a corresponding event, <strong>PrintPageComplete</strong>, which is fired after the page is complete and is a useful place to do any custom drawing on top of the page contents. </p>
+                    <p><b>Step 7 </b>: Now run the application again, and click to Print Preview. Here's a single completed invoice:</p>
+                    <p class=figuredesc><img width=637 height=874 id="_x0000_i1029"
+src=InvoicePreview2.gif><br>
+                      Figure 5: The Final Invoice </p>
+                    <p>and viewing all five invoices in the final print document: </p>
+                    <p class=figuredesc><img width=637 height=597 id="_x0000_i1030"
+src=InvoicePreview3.gif><br>
+                      Figure 6: Showing Five Invoices In the Same Print Document Using PrintForm and PrintChainManager </p>
+                    <p><b><span style='font-size:12.0pt'>Summary </span></b></p>
+                    <p>That's about it for this sample. We've added printing support 
+                      to an application using PrintForm, a process  involving 
+                      much less effort than would have been required if we'd coded 
+                      the printing mechanism by hand. </p>
+                    <p>If you'd like to try out 
+                        this invoice application you'll need the sample code for 
+                        this article and the free trial version of PrintForm. The download links for these are listed 
+                        at the top of this article. </p>
+                    <p>The trial version of PrintForm also contains further samples 
+                      illustrating how to add headers and footers to each page, 
+                      and how to produce multipage reports with different layouts 
+                      on each page with PrintForm. We also produce libraries of controls (barcode, line, rounded rectangle etc) with enhanced printing capabilities, see the PrintControls .NET download, and components for printing TreeView, ListView, RichTextBox etc. - see PrintAdapters .NET.</p>
+                    <p>Further information about PrintForm and other controls 
+                      by TMG Development Ltd can be found at the Winform Reports 
+                      website at <a href="https://www.winformreports.co.uk">https://www.winformreports.co.uk</a></p>
+                    <p>&nbsp;</p>
+                    <p>This article and sample code © TMG Development Ltd 2019<br>
+                      Version 1.1</p>
+                  </div>
+                  <p>&nbsp; </p>
+                </td>
+                <td></td>
+              </tr>
+              <tr> 
+                <td></td>
+                <td></td>
+                <td><img src="shim.gif" width="10" height="10"></td>
+              </tr>
+            </table>
+            <!-- #EndEditable --></td>
+        </tr>
+      </table>
+    </td>
+  </tr>
+</table>
+<script src="https://www.google-analytics.com/urchin.js" type="text/javascript">
+</script>
+<script type="text/javascript">
+_uacct = "UA-2162526-1";
+urchinTracker();
+</script>
+</body>
+<!-- #EndTemplate --></html>

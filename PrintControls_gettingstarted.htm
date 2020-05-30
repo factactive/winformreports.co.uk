@@ -1,0 +1,132 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN" >
+<HTML>
+ <HEAD>
+  <TITLE>Getting Started with PrintControls for .NET</TITLE>
+  <META NAME="GENERATOR" Content="Microsoft Visual Studio 7.0">
+  <style type="text/css"> <!-- body { font-family: Verdana, Arial, Helvetica, sans-serif; font-size: 8pt; color: #000000}
+	p { font-family: Verdana, Arial, Helvetica, sans-serif; font-size: 8pt; color: #000000 ; line-height: 12pt}
+	td { font-family: Verdana, Arial, Helvetica, sans-serif; font-size: 8pt; color: #000000 }
+	a:link { color:#6699FF; text-decoration:none; font-family: Verdana, Arial, Helvetica, sans-serif; font-size: 8pt}
+	a:visited { color:#6699FF; text-decoration:none; font-family: Verdana, Arial, Helvetica, sans-serif; font-size: 8pt}
+	a:active { color:#6699FF; text-decoration:underline; font-family: Verdana, Arial, Helvetica, sans-serif; font-size: 8pt}
+	a:hover { color:#6699FF; text-decoration:underline; font-family: Verdana, Arial, Helvetica, sans-serif; font-size: 8pt}
+	--></style>
+ <meta https-equiv="Content-Type" content="text/html; charset=iso-8859-1"></HEAD>
+ <BODY bgcolor="#ffffff">
+  
+<h1><b><font size="4">Getting Started with PrintControls for .NET</font></b> </h1>
+  
+<P>The PrintControls library provides a set of .NET Windows Forms controls that 
+  are specifically designed to produce scalable graphical output suitable for 
+  sending to the printer. This means you can design your application using our 
+  PrintControls, then when you want to print part of your form you simply call 
+  Print on the outermost container control (Panel).</P>
+  <h3><strong>Overview</strong></h3>
+  
+<P>This document focuses on getting started with PrintControls, aimed at the developer 
+  using PrintControls for the first time. We will create a simple form suitable 
+  for producing a mailing label, complete with barcode. The code for this sample 
+  is included with PrintControls under the Samples menu item.</P>
+  
+<h3>Create the New Project</h3>
+  
+<p>First we need a new project. Here's a new VB.NET windows forms project in the 
+  Visual Studio designer. Note we've already added the PrintControls controls 
+  to the Toolbox (see the <a href="readme.htm">readme</a> for details of this):</p>
+<p><img src="pc_gs1.gif" width="749" height="577"></p>
+  
+<h3><br>
+  Design the Form</h3>
+<p>Now we'll add a PrintControl <strong>Panel</strong>, expand its <strong>BodyStyle</strong> 
+  property and click on the ellipsis next to the <strong>Border</strong> property, 
+  this brings up the Border Style editor. We'll set a single pixel border. Note 
+  that the Corner and Line styles selected on the left hand side of the dialog 
+  are applied by either selecting a predefined border and clicking 'Preview &gt;&gt;', 
+  or by clicking one of the buttons around the preview area on the right hand 
+  side. We produced the effect shown by selecting the rectangular predefined border, 
+  clicking 'Preview':</p>
+<p><img src="pc_gs2.gif" width="749" height="577"></p>
+  
+<p>Now we enter some <strong>BodyText</strong> and alter the BodyStyle <strong>TextAlignment</strong> 
+  and <strong>Rotation</strong> to align the text vertically down the right hand 
+  side of the Panel. </p>
+<p><img src="pc_gs3.gif" width="749" height="577"> </p>
+  
+<p>Adding a some Line controls, we set the color and thickness via the <strong>LineStyle</strong> 
+  property:.</p>
+<p><img src="pc_gs4.gif" width="749" height="577"></p>
+<p>Adding a few more labels, we then highlight one to add a custom border:</p>
+<p><img src="pc_gs5.gif" width="749" height="577"></p>
+<p>And specify the border settings via the BodyStyle Border editor as below. As 
+  before, note that the Corner and Line styles selected on the left hand side 
+  of the dialog are applied by either selecting a predefined border and clicking 
+  'Preview &gt;&gt;', or by clicking one of the buttons around the preview area 
+  on the right hand side. We produced the effect shown by selecting the rectangular 
+  predefined border, clicking 'Preview', and then selecting the Round corner style 
+  and clicking the button to the top right hand and lower right corners of the 
+  preview area to apply a rounded line to that corner:</p>
+<p><img src="pc_gs6.gif" width="608" height="384"></p>
+<p>Now we add two Barcode controls to the label. Note that the Barcode provides 
+  complete control over the dimensions of the bars and gaps, expressed in actual 
+  printer units (specified by the MeasurementUnit property).</p>
+<p><img src="pc_gs7.gif" width="749" height="577"></p>
+<p>The final step is to add a logo PictureBox control to the top left of the form. 
+  Note that the PrintControls PictureBox control preserves a metafile as a metafile 
+  if you set one into its Picture property (unlike the dotnet PictureBox which 
+  translates it into a Bitmap before storing it in the resx, thereby losing the 
+  resolution independence of the metafile).</p>
+<p><img src="pc_gs8.gif" width="749" height="577"></p>
+<h3>Adding the Printing Code</h3>
+<p>Printing a PrintControls Panel is a simple matter of calling its <strong>Print</strong> 
+  method, but in order to see a print preview on screen we need to add the standard 
+  .NET components <strong>PrintDocument</strong> and <strong>PrintPreviewDialog</strong>. 
+  MSDN resources will give you more details about these, but in summary all we 
+  are doing here is</p>
+<ol>
+  <li>setting the PrintPreviewDialog.<strong>Document</strong> property equal 
+    to our PrintDocument</li>
+  <li>adding a PrintDocument.<strong>PrintPage</strong> event handler by double 
+    clicking on the PrintDocument (adding a handler for its default event) and 
+    calling <strong>Panel.Print</strong> in it</li>
+  <li>adding a button with a click handler that calls PrintPreviewDialog.<strong>ShowDialog()</strong></li>
+</ol>
+<p><img src="pc_gs9.gif" width="749" height="577"></p>
+<p>The code for these two event handlers looks like this:</p>
+<pre><font size="2">  Private Sub PrintDocument1_PrintPage(ByVal sender As System.Object, 
+      ByVal e As System.Drawing.Printing.PrintPageEventArgs) Handles PrintDocument1.PrintPage<br>    Me.Panel1.Print(e.Graphics, e.MarginBounds.Location)<br>  End Sub<br><br>  Private Sub ButtonPrintPreview_Click(ByVal sender As System.Object, 
+      ByVal e As System.EventArgs) Handles ButtonPrintPreview.Click<br>    Me.PrintPreviewDialog1.ShowDialog()<br>  End Sub<br></font></pre>
+<h3>Run the Application</h3>
+<p>Hit f5 and run the app. Clicking the button gives us the screen print preview 
+  below. It's not apparent from the screenshot, but the print output is a fully 
+  scalable metafile, so whatever the resolution of your printer you'll get the 
+  best possible output. All PrintControls also support saving an image of their 
+  contents to all the usual .NET image formats (emf, gif, jpg, bmp etc).</p>
+<p><img src="pc_gs10.gif" width="815" height="498"></p>
+<p>&nbsp;</p>
+  <h3><strong>Summary</strong></h3>
+  
+<p>We've only shown a brief overview of some of the features of PrintControls 
+  here to get you started.</p>
+<p>Other features not shown include exact printer sizing - where you set the <strong>MeasurementUnits</strong> 
+  of the control (1/1000th inch, 1/100th mm etc) and then set the size of the 
+  control in these units. This ensures that your barcode or panel comes out at 
+  an exact size on the printout. PrintControls also supports borders on most controls 
+  allowing specification of the corner type and size and the color, linetype, 
+  width of each section of the border. The PrintControls <strong>PictureBox</strong> 
+  fully supports metafile graphics (unlike the standard .NET PictureBox which 
+  converts them to a bitmap), which are especially useful on printouts as they 
+  are drawn to the printer directly giving a high resolution output. Barcodes 
+  support a variety of symbologies (Code128, Code39, ExtendedCode39, Interleaved2Of5 
+  etc) and arbitrary rotation. Checkbox allows you to specify the check image 
+  and the box border style and fill, and there's also a simple Line control, and 
+  of course all these controls are fully printable... </p>
+  
+<p>For more information about PrintControls, and other .NET solutions, please 
+  visit the WinformReports website at <a href="https://www.winformreports.co.uk" target="_blank"> 
+  https://www.winformreports.co.uk</a></p>
+  <p>
+   <!-- #BeginDate format:Am1 -->March 10, 2019<!-- #EndDate -->
+   <br>
+  &copy; 2019-2019 TMG Development Ltd </p>
+ </BODY>
+</HTML>

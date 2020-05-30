@@ -1,0 +1,180 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<html xmlns="https://www.w3.org/1999/xhtml" xmlns:xhtml2rtf=
+"https://www.lutecia.info/download/xmlns/xhtml2rtf">
+<head>
+<link href="readme.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<h1>PrintForm Readme</h1>
+<p>30-Mar-2019</p>
+<p>PrintForm</p>
+<p>Windows Form Printing Component (Full Version) 2.1.0.10.</p>
+<p>Thank you for using PrintForm.NET. PrintForm gives you easy to use printing solutions for your .NET 
+application, with as little as one line of code.<br /></p>
+<p><b>New Features in Version 2.1.0.10</b></p>
+<ul>
+<li>Fix: Updated licensing code for Vista compatability.</li>
+</ul><br />
+<p><b>New Features in Version 2.1.0.9</b></p>
+<ul>
+<li>Fix: Added TMGDevelopment.Licensing.Res.resources to PrintForm assembly to fix <b>MissingManifestResourceException</b> error in VS 2019.</li>
+</ul><br />
+<p><b>New Features in Version 2.1.0.8</b></p>
+<ul>
+<li>Enh: PrintMethodPrint_TextBox modifed to use TextBoxBase, allowing it to handle the 2019 MaskedTextBox (when specified by AddSupportedType).</li>
+<li>Enh: PrintForm.InternalEmfType property now allows finer control of the type of metafile used for assembly of the final image. This can give better rendering of the spacing of some fonts when set to a GDI+ compatibile setting.</li>
+</ul><br />
+<p><b>New Features in Version 2.1.0.7</b></p>
+<ul>
+<li>Fix: e.Graphics argument null in PrintForm.PreDraw event arguments.</li>
+<li>Fix: Honor KnownColor.Transparent in Control.BackColor where possible.</li>
+<li>Fix: Includes TMGDevelopment.Shared.dll 1.0.0.4 fix: accounting for PrintChainManager.Gap value in remaining space on page.</li>
+<li>Fix: Includes TMGDevelopment.Shared.dll 1.0.0.4 fix: first PrintChainManager.DocumentChanged event no longer raised from PrintChainManager.OnBeginPrint, happens during PrintChainManager.OnPrintPage only now.</li>
+</ul><br />
+<p><b>New Features in Version 2.1.0.6</b></p>
+<ul>
+<li>Fix: Text alignment problems with setting RightToLeft=Yes corrected for TextBox, ComboBox in DropDownList mode, NumericUpDown and RichTextBox. These controls are now printed as they are displayed on the Form.</li>
+</ul><br />
+<p><b>New Features in Version 2.1.0.5</b></p>
+<ul>
+<li>Fix: NullReferenceException when printing Controls with zero Height or Width. These controls and their children now no longer printed.</li>
+</ul><br />
+<p><b>New Features in Version 2.1.0.4</b></p>
+<ul>
+<li>Fix: Correct updown button alignment problem for NumericUpdown controls.</li>
+<li>Fix: Correct printing problem with ListView controls (formerly had dependency on latest CLR service packs, see v2.1.0.2 notes, now printed using PrintMethodPrint).</li>
+</ul><br />
+<p><b>New Features in Version 2.1.0.3</b></p>
+<ul>
+<li>Fix: Correct clipping error for ScrollableControl derived controls.</li>
+<li>Fix: Correct RichTextBox printing issue when empty string set.</li>
+<li>Enh: PrintMethodOleDraw now exposes a virtual GetOcx method to allow customisation for other types of ActiveX control wrapper.</li>
+</ul><br />
+<p><b>New Features in Version 2.1.0.2</b></p>
+<ul>
+<li>Fix: Correct CheckBox printing issue using PrintMethodPrintToMetaFile. PrintMethodPrintToMetaFile requires CLR 1.0SP3, 1.1SP1 or 2.0. Added fallback to PrintMethodPrint if required service pack level not available. ListView and TreeView cannot be printed in this scenario.</li>
+</ul><br />
+<p><b>New Features in Version 2.1.0.1</b></p>
+<ul>
+<li>Fix: Correct printed height when chain printing a ScrollableControl with AutoFit=None.</li>
+</ul><br />
+<p><b>New Features in Version 2.1.0.0</b></p>
+<ul>
+<li>New: IPrintMethodAdapter helper classes added.</li>
+<li>Enh: Unified namespaces across PrintAdapters, PrintForm and PrintControls.</li>  
+<li>Enh: PrintForm.dll renamed to TMGDevelopment.PrintForm.dll.</li>  
+<li>Enh: PrintChaining.dll renamed to TMGDevelopment.Shared.dll and more common classes added.</li>  
+<li>Enh: FxCop etc rules applied.</li>
+<li>Fix: VS2019 compatability.</li>
+</ul><br />
+<p><b>New Features in Version 2.0.1.6</b></p>
+<ul>
+<li>New: SetDefaultUseLegacy method added. Allows setting default value on 
+dynamically created Forms / Controls etc.</li>
+</ul><br />
+<p><b>New Features in Version 2.0.1.5</b></p>
+<ul>
+<li>Fix: Correct layout of pages in page chaining scenario when manual zoom factor set.</li>
+<li>Fix: <b>TextBox</b> printing issue on XP/2019 boxes.</li>
+</ul><br />
+<p><b>New Features in Version 2.0.1.3</b></p>
+<ul>
+<li>Fix: <b>Reset</b> and <b>ShouldSerialize</b> VS Designer 
+support methods added for UseLegacyPrinting and 
+BackColorWhilePrinting.</li>
+</ul><br />
+<p><b>New Features in Version 2.0.1.2</b></p>
+<ul>
+<li>New: <b>AutoZoom</b> property indicating to the user what scaling was calculated.</li>
+<li>Fix: <b>Scrollable</b> Form prints at correct location independent of scrollbar positions.</li>
+<li>Fix: <b>AutoFit.Body</b> now works correctly.</li>
+</ul><br />
+<p><b>New Features in Version 2.0.1.0</b></p>
+<ul>
+<li>New: Help file<b>"How do I ... ?"</b> questions and answer list</li>
+<li>New: Complete <b>Help file</b> <b>documentation</b> of PrintForm and Printing namespaces</li>
+<li>New: Help file PrintForm <b>technical overview</b></li>
+<li>New: Samples (see 'Getting Started' below for details) Application: TaxForm, 
+Advanced: PrintLargeControl, PrintToFile, PrintToMultiPageTiffFile, 
+UserControlWithLegacy; Intermediate: PrintHiddenForm, PrintMultipleHiddenForm, 
+PrintToBitmap.</li>
+<li>Fix: Intermittent failure to print TextBoxes on forms with large number of 
+controls (&gt;300).</li>
+<li>Fix: Button, CheckBox &amp; RadioButton in <b>FlatStyle=System</b> 
+don't print as .NET controls, and didn't used to as legacy either. Now fixed to 
+work as legacy.</li>
+<li>Fix: <b>MonthCalendar</b> no longer replaces backcolor at printtime even if it's not been specified as 
+this affects the header too.</li>
+<li>Fix: BackColor fill of nested scrollable panel now drawn as correct size</li>
+<li>Fix: BackColorWhilePrinting for metafile based controls now defaults to the 
+control's BackColor if no alternative set (mainly because RichTextBox doesn't 
+honor it's BackColor in the rendered RTF, so we have to force it)</li>
+</ul><br />
+<p><b>New Features in Version 1.3.1.0</b></p>
+<ul>
+<li>New: <b>PrintChainManager</b> and <b>IPrintChaining</b> definition 
+moved to shared assembly, <b>PrintChaining.dll</b>. PrintChaining 
+shared with PrintAdapters component library</li>
+</ul><br />
+<p><b>New Features in Version 1.3.0.0</b></p>
+<ul>
+<li>New: Added <b>PrintChainManager</b> to PrintForm</li>
+<li>New: Added <b>IPrintChaining</b> interface implementation on PrintForm</li>
+</ul><br />
+<p><b>New Features in Version 1.2.2.0</b></p>
+<ul>
+<li>Fix: Added code to set BackColor for metafile when printing <b>RichTextBox</b></li>
+<li>Fix: Apply zoom scale factor to scrollable control translation offset.</li>
+</ul><br />
+<p><b>New Features in Version 1.2.1.0</b></p>
+<ul>
+<li>New: <b>PrintControl</b> overload allowing user to turn off GDI+ interpolation (for exact bitmap 
+exports)</li>
+<li>Fix: <b>PrintControl</b> printing clipped to MarginBounds for offset-printed controls (e.g. for Tiled printing across multiple pages)</li>
+</ul><br />
+<p><b>New Features in Version 1.2.0.0 </b></p>
+<ul>
+<li>New: printing support for .NET TabletPC controls (<b>Microsoft.Ink.InkEdit </b>
+and<b> Microsoft.Ink.InkPicture</b>)</li>
+<li>New: <b>PrintForm.PreDraw</b>
+event allows you to take charge of printing a particular control</li>
+<li>New: <b>PrintForm.</b><b>PrintControl</b>
+method allows you render any control to any Graphics object - use 
+PrintForm in custom printing / owner draw scenarios</li>
+<li>Improved printing of <b>RichTextBox</b> and <b>TextBox</b>
+controls</li>
+<li>Improved printing of <b>ActiveX</b> controls accessed via COM Interop</li>
+</ul><br />
+<p><b>New Features in Version 1.1.0.0</b></p>
+<ul>
+<li>AutoFit to Page with X/Y Centering option (new <b>PrintForm.AutoFit</b> 
+and <b>PrintForm.CenterStyle</b> properties)</li>
+<li>Print Borders of Forms for Screen Shot printout (new <b>PrintForm.PrintBorders</b> property)</li>
+<li>Manual Zoom setting (new <b>PrintForm.ManualZoom</b> property)</li>
+</ul><br />
+<h2>Installation Instructions</h2>
+<p>You must be logged in as an <b>Administrator</b> when you 
+install PrintForm.NET. To begin the installation process, run the setup.exe program included with 
+your installation files. After the installation process has 
+completed you will need to add the PrintForm components to your 
+Toolbox in Visual Studio.NET using the following procedure:</p>
+<p>1. Open the Visual Studio .NET editor.<br />
+2. Right click on the 'General' tab of the Toolbox, and select 
+'Customise Toolbox...'. (You may alternatively add it to the 
+Windows Forms tab, or create a new tab).<br />
+3. Select the '.NET Framework Components' tab of the Customise 
+Toolbox Dialog and scroll down until you find 'PrintForm' with a namespace of 
+TMGDevelopment.Windows.Forms. Check this, highlight the row and click the namespace column 
+header to sort by namespace. Check all the other controls in the 
+TMGDevelopment.Windows.Forms namespace and click OK.</p>
+<p>You should now be able to drag any PrintForm component from the 
+General Tab of the Toolbox onto your Form.</p>
+<h2>Getting Started</h2>
+<p>PrintForm includes a number of sample applications, but probably 
+the best place to get started is with the technical overview document in the help file, installed under the PrintForm entry on your 
+Start menu.</p>
+<p>If you have any problems using PrintForm, please contact us 
+via our website at <a href="https://www.winformreports.co.uk/contactus.asp">https://www.winformreports.co.uk/contactus.asp</a></p>
+<p>PrintForm.NET &#169; 2002-2019 TMG Development Ltd</p>
+</body>
+</html>

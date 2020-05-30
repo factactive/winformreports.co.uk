@@ -1,0 +1,118 @@
+<?xml version="1.0" encoding="Windows-1252" ?>
+<XML_DIZ_INFO>
+<MASTER_PAD_VERSION_INFO>
+    <MASTER_PAD_VERSION>1.15</MASTER_PAD_VERSION>
+    <MASTER_PAD_INFO>Portable Application Description, or PAD for short, is a data set that is used by shareware authors to disseminate information to anyone interested in their software products. To find out more go to https://www.asp-shareware.org/pad</MASTER_PAD_INFO>
+</MASTER_PAD_VERSION_INFO>
+<Company_Info>
+        <Company_Name>TMG Development Ltd</Company_Name>
+        <Address_1 />
+        <Address_2 />
+        <City_Town />
+        <State_Province />
+        <Zip_Postal_Code />
+        <Country>United Kingdom</Country>
+        <Company_WebSite_URL>https://www.winformreports.co.uk</Company_WebSite_URL>
+<Contact_Info>
+        <Author_First_Name />
+        <Author_Last_Name />
+        <Author_Email />
+        <Contact_First_Name />
+        <Contact_Last_Name />
+        <Contact_Email>enquiries@winformreports.co.uk</Contact_Email>
+    </Contact_Info>
+<Support_Info>
+        <Sales_Email>enquiries@winformreports.co.uk</Sales_Email>
+        <Support_Email>support@winformreports.co.uk</Support_Email>
+        <General_Email>enquiries@winformreports.co.uk</General_Email>
+        <Sales_Phone />
+        <Support_Phone />
+        <General_Phone />
+        <Fax_Phone />
+    </Support_Info>
+</Company_Info>
+<Program_Info>
+        <Program_Name>PrintAdapters</Program_Name>
+        <Program_Version>2.1.0.2</Program_Version>
+        <Program_Release_Month>02</Program_Release_Month>
+        <Program_Release_Day>27</Program_Release_Day>
+        <Program_Release_Year>2019</Program_Release_Year>
+        <Program_Cost_Dollars>299.99</Program_Cost_Dollars>
+        <Program_Cost_Other_Code />
+        <Program_Cost_Other />
+        <Program_Type>Commercial</Program_Type>
+        <Program_Release_Status>Minor Update</Program_Release_Status>
+        <Program_Install_Support>Install and Uninstall</Program_Install_Support>
+        <Program_OS_Support>Win98,WinME,WinNT 4.x,WinXP,Windows2000</Program_OS_Support>
+        <Program_Language>English</Program_Language>
+<File_Info>
+        <Filename_Versioned />
+        <Filename_Previous />
+        <Filename_Generic />
+        <Filename_Long>printadapterstrial.zip</Filename_Long>
+        <File_Size_Bytes>1203984</File_Size_Bytes>
+        <File_Size_K>1176</File_Size_K>
+        <File_Size_MB>1.18</File_Size_MB>
+    </File_Info>
+<Expire_Info>
+        <Has_Expire_Info>Y</Has_Expire_Info>
+        <Expire_Count>30</Expire_Count>
+        <Expire_Based_On>Days</Expire_Based_On>
+        <Expire_Other_Info />
+        <Expire_Month />
+        <Expire_Day />
+        <Expire_Year />
+    </Expire_Info>
+        <Program_Change_Info />
+        <Program_Specific_Category>Development Tools</Program_Specific_Category>
+        <Program_Categories />
+        <Program_System_Requirements>.NET framework 1.0</Program_System_Requirements>
+        <Includes_JAVA_VM>N</Includes_JAVA_VM>
+        <Includes_VB_Runtime>N</Includes_VB_Runtime>
+        <Includes_DirectX>N</Includes_DirectX>
+</Program_Info>
+<Program_Descriptions>
+<English>
+        <Keywords>PrintAdapters,printadapters,.NET,DotNet,dotnet,DataTable,ListView,RichTextBox,TreeView,Form,form,Print,print,Component,component,Control,control,Printing,printing,Report,report,Reporting,reporting,GDI,GDI+,gdi,gdi+,C#,VB.NET</Keywords>
+        <Char_Desc_45>Print .NET List / TreeView and RichTextBox</Char_Desc_45>
+        <Char_Desc_80>Print ListView, TreeView and RichTextBox from your .NET application.</Char_Desc_80>
+        <Char_Desc_250>PrintAdapters for .NET helps the software developer to add printing support for the complex Windows Forms controls ListView, TreeView and RichTextBox to their dotnet application. It also supports DataTable and DataView printing.</Char_Desc_250>
+        <Char_Desc_450>PrintAdapters for .NET helps the software developer to add printing support for the complex Windows Forms controls ListView, TreeView and RichTextBox. The visual style of the printed output can either be automatically mirrored from the current settings on the control, or can be supplied by the developer at design time. PrintAdapters includes comprehensive design time support for style editing which is fully integrated with Visual Studio .NET</Char_Desc_450>
+        <Char_Desc_2000>PrintAdapters for .NET helps the software developer to add printing support for the complex Windows Forms controls ListView, TreeView and RichTextBox to their dotnet application, as well as providing DataTable and DataView printing features. The visual style of the printed output can either be automatically mirrored from the current settings on the control, or can be supplied by the developer at design or run-time. PrintAdapters includes comprehensive design time support for style editing which is fully integrated with Visual Studio .NET.
+
+Key product features include: 
+* Use the appropriate PrintAdapter component in place of the standard .NET PrintDocument class so easily add multipage printing of the ListView, TreeView and RichTextBox control's contents to a .NET application. Also prints DataTable and DataView using the same styling options provided for ListView
+* Prints the .NET ListView, TreeView and RichTextBox controls, either direct to the Printer, or to the PrintPreviewDialog
+* Use the integrated designers to modify the style of the printed output, or automatically pick up the style from the current settings on the control
+* Advanced options enable the developer to use the PrintAdapters components in their own custom printing scheme. For example using the PrintListView component's advanced Drawing features to render a ListView control as a table in a subarea of the page, surrounded by custom output, or combining the output of more than one PrintAdapter component on a single printed page.</Char_Desc_2000>
+</English>
+</Program_Descriptions>
+<Web_Info>
+<Application_URLs>
+        <Application_Info_URL>https://www.winformreports.co.uk</Application_Info_URL>
+        <Application_Order_URL>https://www.winformreports.co.uk/purchase.htm</Application_Order_URL>
+        <Application_Screenshot_URL>https://www.winformreports.co.uk/treesample30.jpg</Application_Screenshot_URL>
+        <Application_Icon_URL />
+        <Application_XML_File_URL>https://www.winformreports.co.uk/printadapters.xml</Application_XML_File_URL>
+    </Application_URLs>
+<Download_URLs>
+        <Primary_Download_URL>https://www.winformreports.co.uk/printadapterstrial.zip</Primary_Download_URL>
+        <Secondary_Download_URL />
+        <Additional_Download_URL_1 />
+        <Additional_Download_URL_2 />
+    </Download_URLs>
+</Web_Info>
+<Permissions>
+        <Distribution_Permissions />
+        <EULA />
+</Permissions>
+<Simtel>
+    <Simtel_Email />
+    <Simtel_FORM>Y</Simtel_FORM>
+    <Simtel_DOS_Category>Select - MS-DOS Platform (blank)</Simtel_DOS_Category>
+    <Simtel_Win31_Category>Select - Win3 Platform unique (blank)</Simtel_Win31_Category>
+    <Simtel_Platform>Select - Other Platform (blank)</Simtel_Platform>
+    <Simtel_Category>Select - Category (blank)</Simtel_Category>
+    <SIMTEL_FORM_VER>1.1 12/07/2001</SIMTEL_FORM_VER>
+</Simtel>
+</XML_DIZ_INFO>

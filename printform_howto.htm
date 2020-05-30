@@ -1,0 +1,852 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+	
+<head>
+<title>How do I ... ?</title>
+<meta https-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+<style type="text/css">
+<!--
+td {  font-family: Verdana, Arial, Helvetica, sans-serif; font-size: 8pt; color: #666666; font-weight: normal; line-height: normal}
+a:link    { color:#0062A4; text-decoration:none; font-family: Verdana, Arial, Helvetica, sans-serif; font-size: 8pt}
+a:visited { color:#0062A4; text-decoration:none; font-family: Verdana, Arial, Helvetica, sans-serif; font-size: 8pt}
+a:active  { color:#0062A4; text-decoration:underline; font-family: Verdana, Arial, Helvetica, sans-serif; font-size: 8pt}
+a:hover   { color:#0062A4; text-decoration:underline; font-family: Verdana, Arial, Helvetica, sans-serif; font-size: 8pt}
+p { font-family: Verdana, Arial, Helvetica, sans-serif; font-size: 8pt; color: #333333; font-weight: normal; line-height: normal}
+input       { color: gray; border: 1px solid; background: none;
+              font-family: Verdana, Arial, Helvetica, sans-serif; font-size: 8pt;
+              padding-left: 3; padding-top: 2; padding-bottom: 3; padding-right: 3; }
+select       { color: gray; border: 1px solid; background: none;
+              font-family: Verdana, Arial, Helvetica, sans-serif; font-size: 8pt;
+              padding-left: 3; padding-top: 2; padding-bottom: 3; padding-right: 3;}
+.widesp {  font-family: Verdana, Arial, Helvetica, sans-serif; font-size: 8pt; line-height: 14pt}
+.codefont { font-style: normal; font-size: 13px; font-weight: normal; color: black ; font-family: "Courier New";}
+-->
+</style>
+<style type="text/css">
+<!--
+h2 {
+	font-size: 10px;
+}
+-->
+</style>
+</head>
+	<body>
+<p><a name="TOP"></a> 
+<table width="100%" border="0" cellspacing="0" cellpadding="0" align="left">
+              <tr> 
+                <td><img src="shim.gif" width="10" height="10"></td>
+                <td></td>
+                <td></td>
+              </tr>
+              <tr> 
+                <td></td>
+                <td> 
+                  <table width="100%" border="0" cellspacing="0" cellpadding="0" align="left">
+        <tr> 
+          <td><img src="Printform%20Howdoi%20Head.gif" width="290" height="51" alt="PrintForm .NET Frequently Asked Questions"></td>
+        </tr>
+        <tr> 
+          <td><img src="shim.gif" width="500" height="10"></td>
+        </tr>
+        <tr> 
+          <td> <p>&nbsp;<strong>Basic Questions. How do I ... ?</strong></p>
+            <ol>
+              <li> <a href="#AddPrintFormto">Add PrintForm to the Visual Studio 
+                Toolbox?</a></li>
+              <li> <a href="#PrintaForm">Print a Form with one line of code?</a></li>
+              <li> <a href="#PrintPreviewaForm">PrintPreview a Form with one line 
+                of code?</a></li>
+              <li> <a href="#ChangetheBackground">Change the Background color 
+                of the Form on the printout?</a></li>
+              <li> <a href="#PreventFormcontrols">Prevent Form controls from showing 
+                up on the printout?</a></li>
+              <li> <a href="#Centertheprinted">Center the printed Form in the 
+                page?</a></li>
+              <li> <a href="#ZoomtheForm">Zoom the Form to fill the printed page?</a></li>
+              <li> <a href="#Addheadersand">Add headers and footers to my printout?</a></li>
+              <li><a href="#Setmargins">Set margin sizes on my printout?</a></li>
+            </ol>
+            <p><strong>&nbsp;Advanced Questions. How do I ... ?</strong></p>
+            <ol>
+              <li> <a href="#Turnprintingof">Turn printing of the borders of my 
+                Form / control on or off?</a></li>
+              <li><a href="#PrintdifferentControls">Print different controls from 
+                a single Form (e.g. Tab pages) on each page of the printout?</a></li>
+              <li> <a href="#PrintdifferentForms">Print different Forms on each 
+                page of the printout?</a></li>
+              <li> <a href="#PrintaFormwhich">Print a Form which is larger than 
+                the paper size over multiple pages?</a></li>
+              <li> <a href="#Printacontrol">Print a control inside a UserControl 
+                with a different BackColor?</a></li>
+              <li> <a href="#SetUseLegacyPrinting">Set UseLegacyPrinting, BackColorWhilePrinting, 
+                VisibleWhilePrinting settings on controls that are inside a UserControl?</a></li>
+              <li> <a href="#Printmorethan">Print more than one Form / container 
+                control (tab, panel etc) on the same page?</a></li>
+              <li> <a href="#PrintthePage">Print the Page image to a file?</a></li>
+              <li> <a href="#PrintmultiplePage">Print multiple Page images to 
+                a TIFF file?</a></li>
+              <li> <a href="#PrintaFormor">Print a Form or control scaled to custom 
+                size?</a></li>
+              <li> <a href="#Printwithoutshowing">Print without showing the 'Printing 
+                Page n' dialog?</a></li>
+              <li> <a href="#Printahidden">Print a hidden Form / control?</a></li>
+              <li> <a href="#Handlerenderingof">Handle rendering of a legacy control 
+                myself?</a></li>
+            </ol>
+            </td>
+        </tr>
+        <tr> 
+          <td>&nbsp;</td>
+        </tr>
+        <tr bgcolor="#A592A5" valign="middle"> 
+          <td><b><font color="#FFFFFF"><a name="BasicQuestions"></a><img src="shim.gif" width="8" height="22" align="left"><a href="#TOP"><img src="top.gif" width="21" height="21" align="right" alt="Top of Page" border="0"></a>Basic 
+            Questions. How do I ... ?</font></b></td>
+        </tr>
+        <tr> 
+          <td>
+<h2>&nbsp;</h2>
+            <table width="100%" border="0" cellspacing="0" cellpadding="1" bgcolor="#000000">
+              <tr> 
+                <td> <table width="100%" border="0" cellspacing="0" cellpadding="8" bgcolor="#FFFFFF">
+                    <tr bgcolor="#F3F3F3"> 
+                      <td><strong><font color="#CC0000">Q: </font></strong><a name="AddPrintFormto"></a>Add 
+                        PrintForm to the Visual Studio Toolbox?&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
+                    </tr>
+                  </table>
+                  <table width="100%" border="0" cellspacing="4" cellpadding="4" bgcolor="#FFFFFF">
+                    <tr> 
+                      <td> <p><strong><font color="#CC0000">A:</font></strong> 
+                          After you have installed the PrintForm component you 
+                          will need to add it to your toolbox so that you can 
+                          then drop it onto your Form. The following procedure 
+                          describes how to do this:</p>
+                        <ol>
+                          <li> Open the Visual Studio .NET editor.</li>
+                          <li> Right click on the 'General' tab of the Toolbox, 
+                            and select 'Customize Toolbox...' ('Add/Remove Items...' 
+                            in Visual Studio 2019). You may alternatively add 
+                            it to the Windows Forms tab, or create a new tab.</li>
+                          <li> Select the .NET Framework Components tab of the 
+                            Customize Toolbox Dialog and scroll down until you 
+                            find 'PrintForm'; check this and click OK.</li>
+                        </ol>
+                        <p>You should now be able to drag a PrintForm component 
+                          from the General Tab of the Toolbox onto your Form's 
+                          Component tray.</p>
+                        </td>
+                      <td>&nbsp;</td>
+                    </tr>
+                  </table></td>
+              </tr>
+            </table>
+            <br>
+            <table width="100%" border="0" cellspacing="0" cellpadding="1" bgcolor="#000000">
+              <tr> 
+                <td> <table width="100%" border="0" cellspacing="0" cellpadding="8" bgcolor="#FFFFFF">
+                    <tr bgcolor="#F3F3F3"> 
+                      <td><strong><font color="#CC0000">Q: </font></strong><a name="PrintaForm"></a>Print 
+                        a Form with one line of code?&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
+                    </tr>
+                  </table>
+                  <table width="100%" border="0" cellspacing="4" cellpadding="4" bgcolor="#FFFFFF">
+                    <tr> 
+                      <td> <p><strong><font color="#CC0000">A:</font></strong> 
+                          Perform the following steps:</p>
+                        <ol>
+                          <li> Drag a PrintForm component onto your Form from 
+                            the Visual Studio Toolbox</li>
+                          <li> Set the <strong>PrintForm.BodyContainer</strong> 
+                            property to reference your Form</li>
+                          <li> Add a button and button click handler. In the handler 
+                            call <strong>PrintForm.Print()</strong></li>
+                        </ol>
+                        </td>
+                      <td>&nbsp;</td>
+                    </tr>
+                  </table></td>
+              </tr>
+            </table>
+            <br>
+            <table width="100%" border="0" cellspacing="0" cellpadding="1" bgcolor="#000000">
+              <tr> 
+                <td> <table width="100%" border="0" cellspacing="0" cellpadding="8" bgcolor="#FFFFFF">
+                    <tr bgcolor="#F3F3F3"> 
+                      <td><strong><font color="#CC0000">Q: </font></strong><a name="PrintPreviewaForm"></a>PrintPreview 
+                        a Form with one line of code?&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
+                    </tr>
+                  </table>
+                  <table width="100%" border="0" cellspacing="4" cellpadding="4" bgcolor="#FFFFFF">
+                    <tr> 
+                      <td> <p><strong><font color="#CC0000">A:</font></strong> 
+                          Perform the following steps:</p>
+                        <ol>
+                          <li> Drag a PrintForm component onto your Form from 
+                            the Visual Studio Toolbox</li>
+                          <li> Set the <strong>PrintForm.BodyContainer</strong> 
+                            property to reference your Form</li>
+                          <li> Drag a PrintPreviewDialog component onto your Form 
+                            from the Visual Studio Toolbox</li>
+                          <li> Set the <strong>PrintPreviewDialog.Document</strong> 
+                            property to reference the PrintForm component</li>
+                          <li> Add a button and button click handler. In the handler 
+                            call <strong>PrintPreviewDialog.ShowDialog()</strong></li>
+                        </ol>
+                        </td>
+                      <td>&nbsp;</td>
+                    </tr>
+                  </table></td>
+              </tr>
+            </table>
+            <br>
+            <table width="100%" border="0" cellspacing="0" cellpadding="1" bgcolor="#000000">
+              <tr> 
+                <td> <table width="100%" border="0" cellspacing="0" cellpadding="8" bgcolor="#FFFFFF">
+                    <tr bgcolor="#F3F3F3"> 
+                      <td><strong><font color="#CC0000">Q: </font></strong><a name="ChangetheBackground"></a>Change 
+                        the Background color of the Form on the printout?&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
+                    </tr>
+                  </table>
+                  <table width="100%" border="0" cellspacing="4" cellpadding="4" bgcolor="#FFFFFF">
+                    <tr> 
+                      <td> <p><strong><font color="#CC0000">A:</font></strong> 
+                          PrintForm extends each control on your Form, and the 
+                          Form itself, with a new property: <strong>BackColorWhilePrinting</strong>. 
+                          You can set this for each control on the Form, but since 
+                          as a general rule child controls inherit their parent's 
+                          BackColor it is usually enough to set the Form's BackColorWhilePrinting 
+                          property (e.g. to White) and all the child controls 
+                          on the Form will pick this up automatically. </p></td>
+                      <td>&nbsp;</td>
+                    </tr>
+                  </table></td>
+              </tr>
+            </table>
+            <br>
+            <table width="100%" border="0" cellspacing="0" cellpadding="1" bgcolor="#000000">
+              <tr> 
+                <td> <table width="100%" border="0" cellspacing="0" cellpadding="8" bgcolor="#FFFFFF">
+                    <tr bgcolor="#F3F3F3"> 
+                      <td><strong><font color="#CC0000">Q: </font></strong><a name="PreventFormcontrols"></a>Prevent 
+                        Form controls from showing up on the printout?&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
+                    </tr>
+                  </table>
+                  <table width="100%" border="0" cellspacing="4" cellpadding="4" bgcolor="#FFFFFF">
+                    <tr> 
+                      <td> <p><strong><font color="#CC0000">A:</font></strong> 
+                          PrintForm extends each control on your Form with a new 
+                          property: <strong>VisibleWhilePrinting</strong>. You 
+                          can set this for each control on the Form to prevent 
+                          it from being rendered in the printout, for example 
+                          you may not want the OK and Cancel buttons to appear 
+                          on the printout. </p></td>
+                      <td>&nbsp;</td>
+                    </tr>
+                  </table></td>
+              </tr>
+            </table>
+            <br>
+            <table width="100%" border="0" cellspacing="0" cellpadding="1" bgcolor="#000000">
+              <tr> 
+                <td> <table width="100%" border="0" cellspacing="0" cellpadding="8" bgcolor="#FFFFFF">
+                    <tr bgcolor="#F3F3F3"> 
+                      <td><strong><font color="#CC0000">Q: </font></strong><a name="Centertheprinted"></a>Center 
+                        the printed Form in the page?&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
+                    </tr>
+                  </table>
+                  <table width="100%" border="0" cellspacing="4" cellpadding="4" bgcolor="#FFFFFF">
+                    <tr> 
+                      <td> <p><strong><font color="#CC0000">A:</font></strong> 
+                          The <strong>PrintForm.CenterStyle</strong> property 
+                          allows you to center the printed output in the horizontal 
+                          or vertical dimension, or both. When the Form or control 
+                          you are printing is smaller than the Margins of the 
+                          printed page, PrintForm uses the CentreStyle setting 
+                          to center the output, alternatively to print the output 
+                          at the top left of the Margin rectangle set CenterStyle 
+                          = <strong> CenterStyle.None</strong>. </p>
+                        <p>The following diagrams illustrate the effects of different 
+                          CenterStyle options:</p>
+                        <p><img src="CenterStyle%20None.jpg" width="226" height="259"><img src="CenterStyle%20Horiz.jpg" width="226" height="259"><br>
+                          <br>
+                          <img src="CenterStyle%20Vert.jpg" width="226" height="259"><img src="CenterStyle%20Both.jpg" width="226" height="259"></p></td>
+                      <td>&nbsp;</td>
+                    </tr>
+                  </table></td>
+              </tr>
+            </table>
+            <br>
+            <table width="100%" border="0" cellspacing="0" cellpadding="1" bgcolor="#000000">
+              <tr> 
+                <td> <table width="100%" border="0" cellspacing="0" cellpadding="8" bgcolor="#FFFFFF">
+                    <tr bgcolor="#F3F3F3"> 
+                      <td><strong><font color="#CC0000">Q: </font></strong><a name="ZoomtheForm"></a>Zoom 
+                        the Form to fill the printed page?&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
+                    </tr>
+                  </table>
+                  <table width="100%" border="0" cellspacing="4" cellpadding="4" bgcolor="#FFFFFF">
+                    <tr> 
+                      <td> <p><strong><font color="#CC0000">A:</font></strong> 
+                          PrintForm can automatically scale the printed output 
+                          it produces to allow a large Form to fit onto a single 
+                          printed page. Setting the <strong>AutoFit</strong> property 
+                          to one of the following values controls this behavior:</p>
+                        <p><strong>PageElement.None</strong>: When AutoFit is 
+                          set to PageElement.None the output is scaled according 
+                          to the setting of the PrintForm.ManualZoom<br>
+                          <strong>PageElement.Body</strong>: Zooming is applied 
+                          to the BodyContainer page element only. HeaderContainer 
+                          and FooterContainer contents will remain at the default 
+                          scale factor of 1.0<br>
+                          <strong>PageElement.All</strong>: Zooming is applied 
+                          to the BodyContainer, HeaderContainer and FooterContainer 
+                          page elements equally, based on the scaling necessary 
+                          to fit the BodyContainer contents into the MarginBounds 
+                          rectangle.<br>
+                        </p>
+                        </td>
+                      <td>&nbsp;</td>
+                    </tr>
+                  </table></td>
+              </tr>
+            </table>
+            <br>
+            <table width="100%" border="0" cellspacing="0" cellpadding="1" bgcolor="#000000">
+              <tr> 
+                <td> <table width="100%" border="0" cellspacing="0" cellpadding="8" bgcolor="#FFFFFF">
+                    <tr bgcolor="#F3F3F3"> 
+                      <td><strong><font color="#CC0000">Q: </font></strong><a name="Addheadersand"></a>Add 
+                        headers and footers to my printout?&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
+                    </tr>
+                  </table>
+                  <table width="100%" border="0" cellspacing="4" cellpadding="4" bgcolor="#FFFFFF">
+                    <tr> 
+                      <td> <p><strong><font color="#CC0000">A:</font></strong> 
+                          PrintForm has three properties that can be set to point 
+                          at individual controls: <strong>HeaderContainer</strong>, 
+                          <strong>BodyContainer</strong> and <strong>FooterContainer</strong>. 
+                          The contents of the control referenced in the BodyContainer 
+                          property are rendered inside the Margin rectangle on 
+                          the page, the HeaderContainer and FooterContainer (if 
+                          specified) are rendered directly above and directly 
+                          beneath the Margin rectangle respectively.</p>
+                        <p><img src="HeaderFooter%20Layout.jpg" width="226" height="259"></p>
+                        <p>So to produce a printout of your Form with headers 
+                          and footers present, add two extra Panels to the Form. 
+                          Inside these add the controls you wish to appear as 
+                          your header and footer. Set HeaderContainer to the header 
+                          panel, BodyContainer to the Form and FooterContainer 
+                          to the footer panel. Finally, make sure they are not 
+                          visible on the surface of the Form by setting their 
+                          <strong>Location</strong> to (-1000, -1000).</p>
+                        </td>
+                      <td>&nbsp;</td>
+                    </tr>
+                  </table></td>
+              </tr>
+            </table>
+            <br>
+            <table width="100%" border="0" cellspacing="0" cellpadding="1" bgcolor="#000000">
+              <tr> 
+                <td> 
+                  <table width="100%" border="0" cellspacing="0" cellpadding="8" bgcolor="#FFFFFF">
+                    <tr bgcolor="#F3F3F3"> 
+                      <td><strong><font color="#CC0000">Q: </font></strong><a name="Setmargins"></a>Set 
+                        margin sizes on my printout?&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
+                    </tr>
+                  </table>
+                  <table width="100%" border="0" cellspacing="4" cellpadding="4" bgcolor="#FFFFFF">
+                    <tr> 
+                      <td> 
+                        <p><strong><font color="#CC0000">A:</font></strong> Margin 
+                          widths are controlled by the <b>Margins</b> property 
+                          of the <b>PageSettings</b> object.</p>
+                        <p>There are two ways to set this: 1) set the <b>PrintDocument.DefaultPageSettings.Margins</b> 
+                          property to control the default margin size of all pages 
+                          printed by the PrintDocument, or 2) set <b>e.PageSettings.Margins</b> 
+                          in the <b>PrintDocument.QueryPageSettings</b> event 
+                          to set each printed page's Margin size individually:</p>
+                        <p>1) Setting the default size for all pages in the form 
+                          Load event via the <b>DefaultPageSettings</b> property:</p>
+                        <pre>Private Sub frmSimpleForm_Load(ByVal sender As System.Object, _<br>ByVal e As System.EventArgs) Handles MyBase.Load <br>&nbsp;&nbsp;Dim newMargins As System.Drawing.Printing.Margins<br>&nbsp;&nbsp;newMargins = New System.Drawing.Printing.Margins(50, 50, 50, 50) <br>&nbsp;&nbsp;Me.PrintForm1.DefaultPageSettings.Margins = newMargins <br>End Sub </pre>
+                        <p>2) Setting each page's Margin size individually via 
+                          the <b>QueryPageSettingsEventArgs.PageSettings</b> property 
+                          in the QueryPageSettings event:</p>
+                        <pre>Private Sub PrintForm1_QueryPageSettings(ByVal sender As Object, _<br>ByVal e As System.Drawing.Printing.QueryPageSettingsEventArgs) Handles PrintForm1.QueryPageSettings<br>&nbsp;&nbsp;Dim newMargins As System.Drawing.Printing.Margins<br>&nbsp;&nbsp;newMargins = New System.Drawing.Printing.Margins(50, 50, 50, 50) <br>&nbsp;&nbsp;e.PageSettings.Margins = newMargins <br>End Sub 
+
+</pre>
+                      </td>
+                      <td>&nbsp;</td>
+                    </tr>
+                  </table>
+                </td>
+              </tr>
+            </table>
+            <br></td>
+        </tr>
+        <tr bgcolor="#A592A5" valign="middle"> 
+          <td><b><font color="#FFFFFF"><a name="AdvancedQuestions"></a><img src="shim.gif" width="8" height="22" align="left"><a href="#TOP"><img src="top.gif" width="21" height="21" align="right" alt="Top of Page" border="0"></a>Advanced 
+            Questions. How do I ... ?</font></b></td>
+        </tr>
+        <tr> 
+          <td>
+<br>
+            <table width="100%" border="0" cellspacing="0" cellpadding="1" bgcolor="#000000">
+              <tr> 
+                <td> <table width="100%" border="0" cellspacing="0" cellpadding="8" bgcolor="#FFFFFF">
+                    <tr bgcolor="#F3F3F3"> 
+                      <td><strong><font color="#CC0000">Q: </font></strong><a name="Turnprintingof"></a>Turn 
+                        printing of the borders of my Form / control on or off?&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
+                    </tr>
+                  </table>
+                  <table width="100%" border="0" cellspacing="4" cellpadding="4" bgcolor="#FFFFFF">
+                    <tr> 
+                      <td> <p><strong><font color="#CC0000">A:</font></strong> 
+                          The borders, or non-client area, of the outermost control 
+                          you are rendering can be turned on or off using the 
+                          <strong>PrintForm.PrintBorders</strong> property. </p>
+                        <p>For example if you are printing a Form in a report 
+                          style document you may not want the Form title bar and 
+                          border to be printed, in this case you would set PrintBorders 
+                          = <strong>None</strong>. Alternatively you may be printing 
+                          a 'screen shot' style representation of a Form where 
+                          you want the title bar and border to be shown, but you 
+                          don't want the borders on your header and footer controls 
+                          to print - in which case you would set PrintBorders 
+                          = <strong>Body</strong>. If you want borders on header, 
+                          body and footer set PrintBorders = <strong>All</strong>.</p>
+            </td>
+                      <td>&nbsp;</td>
+                    </tr>
+                  </table></td>
+              </tr>
+            </table>
+            <br>
+            <table width="100%" border="0" cellspacing="0" cellpadding="1" bgcolor="#000000">
+              <tr> 
+                <td> <table width="100%" border="0" cellspacing="0" cellpadding="8" bgcolor="#FFFFFF">
+                    <tr bgcolor="#F3F3F3"> 
+                      <td><strong><font color="#CC0000">Q: </font></strong><a name="PrintdifferentControls" id="PrintdifferentControls"></a>Print 
+                        different controls from a single Form (e.g. Tab pages) 
+                        on each page of the printout?&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
+                    </tr>
+                  </table>
+                  <table width="100%" border="0" cellspacing="4" cellpadding="4" bgcolor="#FFFFFF">
+                    <tr> 
+                      <td> <p><strong><font color="#CC0000">A:</font></strong> 
+                          This process is illustrated in the MultiPage sample. 
+                          (See the associated readme file).</p>
+                        <p>In summary, the following occurs in this sample:</p>
+                        <p>The PrintForm <strong>QueryPageSettings</strong> event 
+                          is handled, and is used to change the <strong>BodyContainer</strong> 
+                          property of PrintForm for each successive page. In the 
+                          PrintForm.<strong>PrintPage</strong> event handler the 
+                          process is terminated when we have printed all the controls 
+                          we need to print (in this case tab pages of a tab control).</p></td>
+                      <td>&nbsp;</td>
+                    </tr>
+                  </table></td>
+              </tr>
+            </table>
+            <br>
+<table width="100%" border="0" cellspacing="0" cellpadding="1" bgcolor="#000000">
+              <tr> 
+                <td> <table width="100%" border="0" cellspacing="0" cellpadding="8" bgcolor="#FFFFFF">
+                    <tr bgcolor="#F3F3F3"> 
+                      <td><strong><font color="#CC0000">Q: </font></strong><a name="PrintdifferentForms"></a>Print 
+                        different Forms on each page of the printout?&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
+                    </tr>
+                  </table>
+                  <table width="100%" border="0" cellspacing="4" cellpadding="4" bgcolor="#FFFFFF">
+                    <tr> 
+                      <td> <p><strong><font color="#CC0000">A:</font></strong> 
+                          This process is illustrated in the TaxForm sample. (See 
+                          the associated readme file).</p>
+                        <p>In summary, the following occurs in this sample:</p>
+                        <p>A different Form is added to the project for each page 
+                          of the printout. Each form has a PrintForm added, with 
+                          its <strong>BodyContainer</strong> set to the entire 
+                          Form. A main Form is added to the project, containing 
+                          a <strong>PrintChainManager</strong> component. A reference 
+                          to each of the PrintForm controls is added to the PrintChainManager.<strong>Documents</strong> 
+                          collection. When PrintChainManager prints, it chains 
+                          the sequence of pages printed by each of the PrintForm 
+                          controls into a single document.</p>
+                        <p><strong>Note</strong>: any object that implements the 
+                          <strong>IChainedDocument</strong> interface can participate 
+                          in the print job managed by the PrintChainManager. See 
+                          the IChainedDocument documentation for details of how 
+                          to implement this interface on your own classes. Products 
+                          from TMG Development Ltd that support this interface 
+                          include PrintForm and the PrintAdapters suite (PrintListView, 
+                          PrintTreeView, PrintDataTable, PrintRichTextBox).</p>
+                        </td>
+                      <td>&nbsp;</td>
+                    </tr>
+                  </table></td>
+              </tr>
+            </table>
+			<br>
+			<table width="100%" border="0" cellspacing="0" cellpadding="1" bgcolor="#000000">
+              <tr> 
+                <td> <table width="100%" border="0" cellspacing="0" cellpadding="8" bgcolor="#FFFFFF">
+                    <tr bgcolor="#F3F3F3"> 
+                      <td><strong><font color="#CC0000">Q: </font></strong><a name="PrintaFormwhich"></a>Print 
+                        a Form which is larger than the paper size over multiple 
+                        pages?&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
+                    </tr>
+                  </table>
+                  <table width="100%" border="0" cellspacing="4" cellpadding="4" bgcolor="#FFFFFF">
+                    <tr> 
+                      <td> <p><strong><font color="#CC0000">A:</font></strong> 
+                          This process is illustrated in the PrintLargeControl 
+                          sample. (See the associated readme file).</p>
+                        <p>In summary, the following occurs in this sample:</p>
+                        <p>The <strong>PrintForm.PrintControl</strong> method 
+                          is used to render a portion of the Form into the <strong>MarginBounds</strong> 
+                          rectangle on each successive page. The Form is divided 
+                          into a number of 'Tiles' each with an offset from the 
+                          origin (top left) of the control. To print each Tile 
+                          we repeatedly print the Form, negatively offset by the 
+                          specified amount, while the <strong>Graphics.Clip</strong> 
+                          region is set to the page MarginBounds rectangle to 
+                          exclude any portion of the Control not in the current 
+                          Tile.</p>
+                        </td>
+                      <td>&nbsp;</td>
+                    </tr>
+                  </table></td>
+              </tr>
+            </table>
+            <br>
+            <table width="100%" border="0" cellspacing="0" cellpadding="1" bgcolor="#000000">
+              <tr> 
+                <td> <table width="100%" border="0" cellspacing="0" cellpadding="8" bgcolor="#FFFFFF">
+                    <tr bgcolor="#F3F3F3"> 
+                      <td><strong><font color="#CC0000">Q: </font></strong><a name="Printacontrol"></a>Print 
+                        a control inside a UserControl with a different BackColor?&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
+                    </tr>
+                  </table>
+                  <table width="100%" border="0" cellspacing="4" cellpadding="4" bgcolor="#FFFFFF">
+                    <tr> 
+                      <td> <p><strong><font color="#CC0000">A:</font></strong> 
+                          See the <a href="#SetUseLegacyPrinting">following item</a>. 
+                        </p></td>
+                      <td>&nbsp;</td>
+                    </tr>
+                  </table></td>
+              </tr>
+            </table>
+            <br>
+            <table width="100%" border="0" cellspacing="0" cellpadding="1" bgcolor="#000000">
+              <tr> 
+                <td> <table width="100%" border="0" cellspacing="0" cellpadding="8" bgcolor="#FFFFFF">
+                    <tr bgcolor="#F3F3F3"> 
+                      <td><strong><font color="#CC0000">Q: </font></strong><a name="SetUseLegacyPrinting"></a>Set 
+                        UseLegacyPrinting, BackColorWhilePrinting, VisibleWhilePrinting 
+                        settings on controls that are inside a UserControl? </td>
+                    </tr>
+                  </table>
+                  <table width="100%" border="0" cellspacing="4" cellpadding="4" bgcolor="#FFFFFF">
+                    <tr> 
+                      <td> <p><strong><font color="#CC0000">A:</font></strong> 
+                          The problem with controls contained within a UserControl 
+                          is that the Visual Studio designer doesn't see them, 
+                          and consequently you can't set any of the PrintForm 
+                          extender properties for them whilst in the designer. 
+                          The solution is to set them at runtime via the appropriate 
+                          Set&lt;extender-property-name&gt; function.</p>
+                        <p>This process is illustrated in the UserControlWithLegacy 
+                          sample. (See the associated readme file).</p>
+                        </td>
+                      <td>&nbsp;</td>
+                    </tr>
+                  </table></td>
+              </tr>
+            </table>
+            <br>
+            <table width="100%" border="0" cellspacing="0" cellpadding="1" bgcolor="#000000">
+              <tr> 
+                <td> <table width="100%" border="0" cellspacing="0" cellpadding="8" bgcolor="#FFFFFF">
+                    <tr bgcolor="#F3F3F3"> 
+                      <td><strong><font color="#CC0000">Q: </font></strong><a name="Printmorethan"></a>Print 
+                        more than one Form / container control (tab, panel etc) 
+                        on the same page?&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
+                    </tr>
+                  </table>
+                  <table width="100%" border="0" cellspacing="4" cellpadding="4" bgcolor="#FFFFFF">
+                    <tr> 
+                      <td> <p><strong><font color="#CC0000">A:</font></strong> 
+                          The default behavior of PrintForm is to print a single 
+                          nominated control (referenced by the <strong>BodyContainer</strong> 
+                          property) into the <strong>MarginBounds</strong> rectangle 
+                          of the page. This architecture is designed for simplicity 
+                          (see <a href="#PrintaForm"> Print a Form with One Line 
+                          Of Code</a>), but in more complex scenarios you may 
+                          have a tab control on a Form where you want to print 
+                          all the tabs on one page. In this situation you would 
+                          use the <strong>PrintForm.PrintControl()</strong> method 
+                          which allows you to render any control you like at any 
+                          position on the page.</p>
+                        <p>This process is illustrated in the PrintMultipleHiddenForm 
+                          sample. (See the associated readme file).</p>
+                        </td>
+                      <td>&nbsp;</td>
+                    </tr>
+                  </table></td>
+              </tr>
+            </table>
+            <br>
+            <table width="100%" border="0" cellspacing="0" cellpadding="1" bgcolor="#000000">
+              <tr> 
+                <td> <table width="100%" border="0" cellspacing="0" cellpadding="8" bgcolor="#FFFFFF">
+                    <tr bgcolor="#F3F3F3"> 
+                      <td><strong><font color="#CC0000">Q: </font></strong><a name="PrintthePage"></a>Print 
+                        the Page image to a file?&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
+                    </tr>
+                  </table>
+                  <table width="100%" border="0" cellspacing="4" cellpadding="4" bgcolor="#FFFFFF">
+                    <tr> 
+                      <td> <p><strong><font color="#CC0000">A:</font></strong> 
+                          The PrintToFile sample (See the associated readme file) 
+                          shows how to print a representation of the printed page 
+                          (headers and footers included) to a file. It uses a 
+                          specialization of the .NET class <strong>PrintController</strong>, 
+                          called <strong>FilePrintController</strong>, which is 
+                          included in this project (.NET provides a StandardPrintController, 
+                          PrintControllerWithStatusDialog and PreviewPrintController). 
+                          FilePrintController supplies a Graphics object obtained 
+                          from a Bitmap to the standard printing mechanism. You 
+                          could use this class to print to any of the file formats 
+                          .NET supports even if you were not using PrintForm to 
+                          render your printed output.</p>
+                        <p>If you just want to save an image of a given control 
+                          or Form to a file you can use code similar to the following:</p>
+                        <pre>Private Sub Button1_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) _
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Handles Button1.Click
+	' Save an image of the Form
+	Dim target As Control = Me
+	Dim r As Rectangle = New Rectangle(New Point(0, 0), target.Size)
+	Dim img As New Bitmap(r.Width, r.Height)
+	Dim g As Graphics = Graphics.FromImage(img)
+	Me.PrintForm1.PrintControl(g, r, target, 1.0)
+	g.Dispose()
+	img.Save(&quot;c:\image.bmp&quot;, System.Drawing.Imaging.ImageFormat.Bmp)
+	img.Dispose()
+End Sub
+</pre> 
+                        <p> See the PrintToBitmap sample for further details (See 
+                          the associated readme file).<br>
+                        </p>
+                        </td>
+                      <td>&nbsp;</td>
+                    </tr>
+                  </table></td>
+              </tr>
+            </table>
+            <br>
+            <table width="100%" border="0" cellspacing="0" cellpadding="1" bgcolor="#000000">
+              <tr> 
+                <td> <table width="100%" border="0" cellspacing="0" cellpadding="8" bgcolor="#FFFFFF">
+                    <tr bgcolor="#F3F3F3"> 
+                      <td><strong><font color="#CC0000">Q: </font></strong><a name="PrintmultiplePage"></a>Print 
+                        multiple Page images to a TIFF file?&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
+                    </tr>
+                  </table>
+                  <table width="100%" border="0" cellspacing="4" cellpadding="4" bgcolor="#FFFFFF">
+                    <tr> 
+                      <td> <p><strong><font color="#CC0000">A:</font></strong> 
+                          The PrintToMultiPageTiffFile sample (See the associated 
+                          readme file) shows how to print multiple pages into 
+                          a single multi-page .tif (TIFF) file. It uses a specialization 
+                          of the .NET class PrintController, called <strong>FilePrintController</strong>, 
+                          which is included in this project. FilePrintController 
+                          supplies a Graphics object obtained from a Bitmap to 
+                          the standard printing mechanism and appends each Bitmap 
+                          to a single TIFF image. </p></td>
+                      <td>&nbsp;</td>
+                    </tr>
+                  </table></td>
+              </tr>
+            </table>
+            <br>
+            <table width="100%" border="0" cellspacing="0" cellpadding="1" bgcolor="#000000">
+              <tr> 
+                <td> <table width="100%" border="0" cellspacing="0" cellpadding="8" bgcolor="#FFFFFF">
+                    <tr bgcolor="#F3F3F3"> 
+                      <td><strong><font color="#CC0000">Q: </font></strong><a name="PrintaFormor"></a>Print 
+                        a Form or control scaled to custom size?&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
+                    </tr>
+                  </table>
+                  <table width="100%" border="0" cellspacing="4" cellpadding="4" bgcolor="#FFFFFF">
+                    <tr> 
+                      <td> <p><strong><font color="#CC0000">A:</font></strong> 
+                          Perform the following steps:</p>
+                        <ol>
+                          <li> Drag a PrintForm component onto your Form</li>
+                          <li> Set the <strong>PrintForm.BodyContainer</strong> 
+                            property to reference your Form</li>
+                          <li> Set <strong>PrintForm.AutoFit = None</strong>, 
+                            to prevent PrintForm from automatically scaling up 
+                            the Form to fit the page.</li>
+                          <li> Set <strong>PrintForm.ManualZoom</strong> to the 
+                            scale you want, say 0.5</li>
+                          <li> Set <strong>PrintForm.CenterStyle</strong> to control 
+                            how the image is centered on the page.</li>
+                          <li> Add a button and button click handler. In the handler 
+                            call <strong>PrintForm.Print()</strong></li>
+                        </ol>
+                        <p>Alternatively if you are using the <strong>PrintForm.PrintControl()</strong> 
+                          method in a custom printing scenario you can set the 
+                          scale of the output in the 4th parameter.</p>
+                        </td>
+                      <td>&nbsp;</td>
+                    </tr>
+                  </table></td>
+              </tr>
+            </table>
+            <br>
+            <table width="100%" border="0" cellspacing="0" cellpadding="1" bgcolor="#000000">
+              <tr> 
+                <td> <table width="100%" border="0" cellspacing="0" cellpadding="8" bgcolor="#FFFFFF">
+                    <tr bgcolor="#F3F3F3"> 
+                      <td><strong><font color="#CC0000">Q: </font></strong><a name="Printwithoutshowing"></a>Print 
+                        without showing the 'Printing Page n' dialog?&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
+                    </tr>
+                  </table>
+                  <table width="100%" border="0" cellspacing="4" cellpadding="4" bgcolor="#FFFFFF">
+                    <tr> 
+                      <td> <p><strong><font color="#CC0000">A:</font></strong> 
+                          The solution here is to change the <strong>PrintController</strong> 
+                          that the .NET printing mechanism uses. By default it 
+                          uses a <strong>PrintControllerWithStatusDialog</strong> 
+                          object, but there is also one in the .NET framework 
+                          which doesn't display the status dialog, called <strong>StandardPrintController</strong>. 
+                        </p>
+                        <p>Set the PrintController property of PrintForm as follows, 
+                          before calling Print, or doing a PrintPreview:</p>
+                        <pre>Me.PrintForm1.PrintController = New System.Drawing.Printing.StandardPrintController()</pre></td>
+                      <td>&nbsp;</td>
+                    </tr>
+                  </table></td>
+              </tr>
+            </table>
+            <br>
+            <table width="100%" border="0" cellspacing="0" cellpadding="1" bgcolor="#000000">
+              <tr> 
+                <td> <table width="100%" border="0" cellspacing="0" cellpadding="8" bgcolor="#FFFFFF">
+                    <tr bgcolor="#F3F3F3"> 
+                      <td><strong><font color="#CC0000">Q: </font></strong><a name="Printahidden"></a>Print 
+                        a hidden Form / control?&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
+                    </tr>
+                  </table>
+                  <table width="100%" border="0" cellspacing="4" cellpadding="4" bgcolor="#FFFFFF">
+                    <tr> 
+                      <td> <p><strong><font color="#CC0000">A:</font></strong> 
+                          You will not always want to show the form you are about 
+                          to print to the user, for example in a batch printing 
+                          application, or where the layout of the printed form 
+                          is required to be different to the user interface. In 
+                          this situation you might expect to be able to simply 
+                          call <strong>PrintForm.Print()</strong> without displaying 
+                          the Form, once you had setup the required PrintForm 
+                          properties. In fact some controls (TextBox, ListBox, 
+                          Combo etc) will not appear on the printed output if 
+                          you do this because they rely on Win32 controls internally 
+                          which are detecting that they are not visible and are 
+                          optimizing the repainting of the form by not displaying 
+                          themselves. </p>
+                        <p>The solution to this legacy control problem is to make 
+                          sure that the form is visible, but just out of view. 
+                          To this end the technique we use in this sample is to 
+                          re-parent the form we wish to print to our main application's 
+                          form, move it out of view and then print it.</p>
+                        <p>This process is illustrated in the PrintHiddenForm 
+                          sample. (See the associated readme file).</p>
+                        </td>
+                      <td>&nbsp;</td>
+                    </tr>
+                  </table></td>
+              </tr>
+            </table>
+            <br>
+            <table width="100%" border="0" cellspacing="0" cellpadding="1" bgcolor="#000000">
+              <tr> 
+                <td> <table width="100%" border="0" cellspacing="0" cellpadding="8" bgcolor="#FFFFFF">
+                    <tr bgcolor="#F3F3F3"> 
+                      <td><strong><font color="#CC0000">Q: </font></strong><a name="Handlerenderingof"></a>Handle 
+                        rendering of a legacy control myself?&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
+                    </tr>
+                  </table>
+                  <table width="100%" border="0" cellspacing="4" cellpadding="4" bgcolor="#FFFFFF">
+                    <tr> 
+                      <td> <p><strong><font color="#CC0000">A:</font></strong> 
+                          A very few legacy controls may not respond to the methods 
+                          that PrintForm uses to get them to render themselves 
+                          into the printout. In this situation it may be that 
+                          the control offers some other mechanism for obtaining 
+                          an image of it's contents (Save to file, copy to clipboard 
+                          etc). If this is the case PrintForm provides an event, 
+                          the <strong>PreDraw</strong> event, that you can handle 
+                          to take charge of rendering the control yourself.</p>
+                        <p>Here is some sample code that shows how to use a legacy 
+                          control's SaveBitmapImage function to copy an image 
+                          of its client area onto the clipboard, and then render 
+                          that image into the printout. In this case the legacy 
+                          control is a Nevron 3D Chart ActiveX control:</p>
+                        <pre>Private Sub PrintForm1_PreDraw(ByVal e As TMGDevelopment.PrintForm.PreDrawEventArgs) _
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Handles PrintForm1.PreDraw
+  ' look for the control we're interested in
+  If e.Control Is Me.NChart1 Then
+    ' this code is from the following Nevron sample and is specific to the Nevron ActiveX control:
+    ' Nevron\3DChart\Example Files\Examples\3DChart\Visual Basic 6\ImportExport\Clipboard
+    Dim vFile As Object
+    Dim bUseWindowDim, bOK As Boolean
+    Dim nHeight, nWidth, nBitsPerPixel As Integer
+    bUseWindowDim = True
+    nBitsPerPixel = 24
+    nHeight = e.Bounds.Height
+    nWidth = e.Bounds.Width
+    ' a variant with an empty string indicates that we want to use the clipboard
+    vFile = &quot;&quot;
+    NChart1.ImportExport.SaveBitmapImage(vFile, bUseWindowDim, nWidth, nHeight, nBitsPerPixel) 
+
+    ' this is generic code for getting a bitmap from the clipboard and drawing it:
+    Dim iData As IDataObject = Clipboard.GetDataObject()
+    Dim img As System.Drawing.Bitmap = iData.GetData(DataFormats.Bitmap, True)
+    e.Graphics.DrawImage(img, e.Bounds)
+    e.OwnerDrawn = True ' tell PrintForm we've drawn this control
+  End If
+End Sub
+</pre>
+</td>
+                      <td>&nbsp;</td>
+                    </tr>
+                  </table></td>
+              </tr>
+            </table>
+            <p><br>
+            </p></td>
+        </tr>
+      </table>
+                </td>
+                <td></td>
+              </tr>
+              <tr> 
+                <td></td>
+                <td></td>
+                <td><img src="shim.gif" width="10" height="10"></td>
+              </tr>
+            </table>
+<p></p>
+
+
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p><br>
+</p>
+		
+<h2>&nbsp;</h2>
+		
+<h1>&nbsp; </h1>
+		</body>
+</html>

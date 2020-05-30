@@ -1,0 +1,187 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN" >
+<HTML>
+ <HEAD>
+  <TITLE>PrintAdapters .NET CustomerQuote Sample - Readme</TITLE>
+  <META NAME="GENERATOR" Content="Microsoft Visual Studio 7.0">
+  <style type="text/css"> <!-- body { font-family: Verdana, Arial, Helvetica, sans-serif; font-size: 8pt; color: #666666}
+	p { font-family: Verdana, Arial, Helvetica, sans-serif; font-size: 8pt; color: #666666 ; line-height: 12pt}
+	td { font-family: Verdana, Arial, Helvetica, sans-serif; font-size: 8pt; color: #666666 }
+	a:link { color:#6699FF; text-decoration:none; font-family: Verdana, Arial, Helvetica, sans-serif; font-size: 8pt}
+	a:visited { color:#6699FF; text-decoration:none; font-family: Verdana, Arial, Helvetica, sans-serif; font-size: 8pt}
+	a:active { color:#6699FF; text-decoration:underline; font-family: Verdana, Arial, Helvetica, sans-serif; font-size: 8pt}
+	a:hover { color:#6699FF; text-decoration:underline; font-family: Verdana, Arial, Helvetica, sans-serif; font-size: 8pt}
+	--></style>
+ <meta https-equiv="Content-Type" content="text/html; charset=iso-8859-1"></HEAD>
+ <BODY bgcolor="#ffffff">
+  <h1><b><font size="4">A Customer Quote Application in VB.NET<BR>
+    </font></b><B><FONT size="2">Illustrating the&nbsp;Control and 
+     DataTable&nbsp;Printing Features of PrintAdapters.NET </FONT></B></h1>
+  <H3><STRONG>Overview</STRONG></H3>
+  <P>This sample demonstrates how&nbsp;to use&nbsp;<STRONG>PrintAdapters</STRONG> and
+   <STRONG>PrintChainManager</STRONG> to create a finished application with the 
+   contents of multiple scrolling controls printed end to end to produce a printed 
+   customer quote.</P>
+  <P>It is quite common in an application to have a number of controls which 
+   display a large amount of data on screen by means of scrolling 'window' onto 
+   the data; typical examples include ListView, TreeView, RichTextBox, 
+   DataGrid&nbsp;etc. When it becomes necessary to print this data&nbsp;out, 
+   traditional approaches call for either:&nbsp;a) bespoke code to print the 
+   contents of the control over multiple pages, or b) the use of a reporting tool. 
+   Bespoke code is time consuming to write, and reporting tools frequently involve 
+   difficult configuration to achieve a similar effect - try printing ListView, 
+   TreeView or RichTextBox contents with your favourite reporting tool and you'll 
+   see what I mean.</P>
+  <P>This is why we designed <STRONG>PrintAdapters </STRONG>for .NET. We wanted to 
+   be able to print the contents of controls such as TreeView and ListView without 
+   having to re-code everything to fit in with a reporting tool, and since .NET 
+   gives us such an extensible mechanism in the form of PrintDocument, 
+   PrinterSettings etc, a set of 'adapters' that render the data we wanted seemed 
+   the ideal way to go.</P>
+  <P>The .NET framework gives you the basic PrintDocument, and we have provided 
+   specialisations suited to printing each of the controls discussed above. We 
+   have also implemented a further PrintDocument based component <STRONG>PrintChainManager</STRONG>&nbsp;that 
+   stitches together the output of multiple PrintDocument derived classes to form 
+   a single print job, and handles the tracking of how much space on the page each 
+   PrintDocument has used, so that the next one can start printing where the 
+   previous one left off.</P>
+  <P>&nbsp;</P>
+  <h3><strong>Application Architecture</strong></h3>
+  <P>   <img src="readme%20images/VSProject%20QuoteTab.gif" width="676" height="498"></P>
+  <P>The&nbsp;CustomerQuote application consists of a main form, frmMain. To this 
+   we have added a <STRONG>TabControl</STRONG>: the first tab holds the <STRONG>DataGrid</STRONG>
+   of mock product data, and a number of controls that allow us to customise the 
+   output.</P>
+  <P><img src="readme%20images/VSProject%20TextTab.gif" width="676" height="498"></P>
+  <P>
+   The second tab holds three <STRONG>RichTextBox</STRONG> controls. When we 
+   produce the customer quote printout we want the contents of these controls 
+   printed in this order: 1. Contents of RichTextBox1,&nbsp; 2. Contents of the 
+   DataGrid,&nbsp; 3. Contents of RichTextBox2,&nbsp; 4. Contents of RichTextBox3 
+   - to produce something like this (Note that we specifically want the 
+   RichTextBox 4, the Terms &amp; Conditions text, &nbsp;to appear on a new page 
+   on its own - we'll deal with how we do this later):</P>
+  <P><IMG alt="" src="readme images\Printed Layout.gif"></P>
+  <P><U><STRONG>Setting up the DataSet</STRONG></U></P>
+  <P>The mock product data is loaded from an embedded resource XML file into the 
+   DataSet DSProducts1 like this:</P>
+  <P>Me.DsProducts1.ReadXml([Assembly].GetExecutingAssembly().GetManifestResourceStream("CustomerQuote.products.xml"))
+  </P>
+  <P><STRONG><EM>Note</EM></STRONG>: the key point&nbsp;when loading&nbsp;embedded 
+   resources is&nbsp;to get the fully qualified name of the resource (the part in 
+   quotes&nbsp;in the above code line) exactly right. A handy tip for checking 
+   what you should use is to open the <STRONG>ILDASM.exe</STRONG> tool that comes 
+   with Visual Studio, point it at your complied executable, and then double click 
+   on the <STRONG>MANIFEST</STRONG> section. This lists, among other things, the 
+   fully qualified names of all the embedded resources.</P>
+  <P><STRONG><U>Filtering the contents of the DataGrid using a DataView</U></STRONG></P>
+  <P>We've added a <STRONG>DataView</STRONG> (called DataViewProductsSelected) to 
+   frmMain as well, whose <STRONG>DataSource</STRONG> is <STRONG>DSProducts1.Products</STRONG>
+   - this will allow us to filter the data displayed on the printout. <STRONG>DataGrid1's</STRONG>
+   <STRONG>DataSource</STRONG> is set to this DataView.</P>
+  <P>We set the filter expression when the price combo's selection changes like 
+   this:</P>
+  <P>Me.DataViewProductsSelected.RowFilter = "UnitPrice &lt; " &amp; 
+   Me.cmbMinPrice.Text</P>
+  <P><STRONG><U>Setting up the RichTextBox Controls</U></STRONG></P>
+  <P>We've included the standard RTF text we want to appear in each of the 
+   RichTextBoxes as embedded resources in the project then we load them in with
+    a  call to <STRONG>GetManifestResourceStream</STRONG> as follows:</P>
+  <P>Me.rtbTC.LoadFile([Assembly].GetExecutingAssembly().GetManifestResourceStream("CustomerQuote.TermsAndConditions.rtf"), 
+   RichTextBoxStreamType.RichText)</P>
+  <h3>
+   <strong>Adding Printing Support</strong></h3>
+  <P>At this point we have a form with a DataGrid populated from a DataView. When 
+   we change the minimum price in the combo, the DataView is refreshed and the 
+   DataGrid reflects the change.</P>
+  <P>Now we need to produce the printout... this is actually quite easy with 
+   PrintAdapters, and is largely a case of dropping components onto the form and 
+   configuring their properties with point-and-click:</P>
+  <OL>
+   <li>
+    Add a <strong>PrintRichTextBox</strong> component&nbsp;for each of 
+    the&nbsp;RichTextBox controls, set each one's <STRONG>RichTextBoxControl</STRONG>
+    property to the appropriate RichTextBox control<BR>
+   <LI>
+    Add a <STRONG>PrintDataTable</STRONG> component to the form. Set it's <STRONG>DataSource</STRONG>
+    property to the products selection <STRONG>DataView<BR>
+    </STRONG>
+   <li>
+    Add a <strong>PrintChainManager</strong> to the form
+    <BR>
+   <li>
+    Now we need to add a small amout of code to tell the PrintChainManager about 
+    the sequence of documents it is to print. Add the following code to the form's <strong>
+     Load</strong> event handler:<BR>
+    <BR>
+    Me.PrintChainManager1.Documents.Add(Me.PrintRichTextBox1)
+    <BR>
+    Me.PrintChainManager1.Documents.Add(Me.PrintDataTable1)
+    <BR>
+    Me.PrintChainManager1.Documents.Add(Me.PrintRichTextBox2)
+    <BR>
+    Me.PrintChainManager1.Documents.Add(Me.PrintRichTextBox3)
+    <BR>
+   <li>
+    Add a standard .NET&nbsp; <strong>PrintPreviewDialog</strong> component to the 
+    main form. Set its <strong>Document</strong> property to the <strong>PrintChainManager</strong>
+    reference
+    <BR>
+   <li>
+    Now add a menu item click handler to call <strong>PrintPreviewDialog.ShowDialog</strong>:<br>
+    <br>
+    Me.PrintPreviewDialog1.ShowDialog()<br>
+   </li>
+  </OL>
+  <P>Finally, we mentioned earlier that we want the contents of the final 
+   RichTextBox, holding the Terms &amp; Conditions text, to appear on a new page
+    rather than flowing on from the previous text. To do this we need to turn
+   off 
+   the <STRONG>FlowDocuments</STRONG> property of <STRONG>PrintChainManager</STRONG>.
+    This is set true by default, and in this state ensures that each new 
+   PrintAdapter starts printing immendiately after the previous one on the same
+   page. When it is set false each new PrintAdapter prints on a new page. So
+   what we
+   do
+   is
+   add a 
+   handler for the <STRONG>PrintChainManager.DocumentChanged</STRONG> event,
+   and  when we detect that the ActiveDocument is RichTextBox3 turn off FlowDocuments,
+   
+   thus ensuring that RichTextBox3 is printed on a new page:</P>
+  <P>Private Sub PrintChainManager1_DocumentChanged(ByVal sender As Object, ByVal 
+   e As System.EventArgs) Handles PrintChainManager1.DocumentChanged
+   <BR>
+   &nbsp;&nbsp;Me.PrintChainManager1.FlowDocuments = Not 
+   (Me.PrintChainManager1.ActiveDocument Is Me.PrintRichTextBox3)
+   <BR>
+   End Sub
+  </P>
+  <h3><strong>The Finished Product</strong></h3>
+  <p>Now, in the design enviroment we have a form with a number of components in 
+   the component tray.</p>
+  <p><IMG alt="" src="readme images\VSProject Final.gif"></p>
+  <P>We set up a <strong>TableStyle</strong> for the <strong>PrintDataTable</strong> using the TableStyle designers 
+   (these are discussed in detail in the "TableStyle How To..." - see the help 
+   file):</P>
+  <P><IMG alt="" src="readme images\TableStyle designer.gif"></P>
+  <P>Running the application:</P>
+  <p><img src="readme images\App run.gif" width="616" height="299"></p>
+  <p>
+   And the corresponding print preview... because PrintAdapters renders 
+   the&nbsp;control contents in a resolution independent manner the result is a 
+   high quality printout, without any of the effort of writing all the printing 
+   code yourself:</p>
+  <p><IMG alt="" src="readme images\Printed Layout Final.gif"></p>
+  <p>PrintAdapters can also print the contents of DataTables and&nbsp;ListView and 
+   TreeView controls in a similar manner to the&nbsp;examples above.</p>
+  <P>For more information about PrintAdapters, and other .NET solutions, please 
+   visit the WinformReports website at <a href="https://www.winformreports.co.uk" target="_blank">
+    https://www.winformreports.co.uk</a></P>
+ <p>
+   <!-- #BeginDate format:Am1 -->July 8, 2019<!-- #EndDate -->
+   <br>
+  &copy; 2002-2019 <a href="https://www.wikipedia.org" target="_blank">TMG
+    Development Ltd </a>
+  </p>
+ </BODY>
+</HTML>

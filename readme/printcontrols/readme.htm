@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<html xmlns="https://www.w3.org/1999/xhtml" xmlns:xhtml2rtf=
+"https://www.lutecia.info/download/xmlns/xhtml2rtf">
+<head>
+<link href="readme.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<h1>PrintControls Readme</h1>
+<p>30-Mar-2019</p>
+<p>PrintControls Library.</p>
+<p>PrintControls.dll (Full Version) 1.1.0.2.</p>
+<p>PrintControls provides a set of printable winforms controls to 
+support the printing of labels, invoices, barcodes etc directly 
+from a .NET Windows Forms application.</p><br/>
+<p><b>New Features in Version 1.1.0.2</b></p>
+<ul>
+<li>Fix: Updated licensing code for Vista compatability.</li>
+</ul><br />
+<p><b>New Features in Version 1.1.0.1</b></p>
+<ul>
+<li>Fix: Includes TMGDevelopment.Shared.dll 1.0.0.4 fix: accounting for PrintChainManager.Gap value in remaining space on page.</li>
+<li>Fix: Includes TMGDevelopment.Shared.dll 1.0.0.4 fix: first PrintChainManager.DocumentChanged event no longer raised from PrintChainManager.OnBeginPrint, happens during PrintChainManager.OnPrintPage only now.</li>
+</ul><br />
+<p><b>Version 1.1.0.0</b></p>
+<ul>
+<li>Enh: Unified namespaces across PrintAdapters, PrintForm and PrintControls.</li>  
+<li>Enh: PrintControls.dll renamed to TMGDevelopment.PrintControls.dll.</li>  
+<li>Enh: PrintChaining.dll renamed to TMGDevelopment.Shared.dll and more common classes added.</li>  
+<li>Enh: FxCop etc rules applied.</li>
+<li>Fix: VS2019 compatability.</li>
+<li>Fix: CheckBox sizing problems.</li>
+</ul><br/>
+<p><b>Version 1.0.0.2</b></p>
+<ul>
+<li>Enh: implemented new interface member IPrintableControl.VisibleOnPrintout.</li>
+</ul><br/>
+<p><b>Version 1.0.0.1</b></p>
+<ul>
+<li>Fix: incorrect WideToNarrowRatio used with module width encoding barcodes.</li>
+</ul><br/>
+<p><b>Version 1.0.0.0</b></p>
+<ul>
+<li>Initial Release.</li>
+<li>Trial and Retail versions available.</li>
+<li>Full printing support included, including PrintChaining compatible with PrintForm and PrintAdapters printing products.</li>
+<li>Controls included: Barcode (Code128, Code39, ExtendedCode39, Interleaved2Of5), Checkbox, Label, Line, Panel, PictureBox.</li>
+<li>PrintControlsDemo sample code included.</li>
+<li>Fully documented in standard help file format.</li>
+</ul><br/>
+<h2>Installation Instructions</h2>
+<p>You must be logged in as an <b>Administrator</b> when you 
+install PrintControls.NET. To begin the installation process, run the setup.exe program included with 
+your installation files. After the installation process has 
+completed you will need to add the PrintControls components to your 
+Toolbox in Visual Studio.NET using the following procedure:</p>
+<p>1. Open the Visual Studio .NET editor.<br />
+2. Right click on the 'General' tab of the Toolbox, and select 
+'Customise Toolbox...'. (You may alternatively add it to the 
+Windows Forms tab, or create a new tab).<br />
+3. Select the '.NET Framework Components' tab of the Customise 
+Toolbox Dialog and scroll down until you find 'Barcode' with a namespace of 
+TMGDevelopment.Windows.Forms. Check this, highlight the row and click the namespace column 
+header to sort by namespace. Check all the other controls in the 
+TMGDevelopment.Windows.Forms namespace and click OK.</p>
+<p>You should now be able to drag any PrintControls component from the 
+General Tab of the Toolbox onto your Form.</p>
+<h2>Getting Started</h2>
+<p>PrintControls includes a number of sample applications, but probably 
+the best place to get started is with the Getting Started document in the help file, and 
+the accompanying GettingStarted project installed under the PrintControls entry on your 
+Start menu.</p>
+<p>If you have any problems using PrintControls, please contact us 
+via our website at <a href="https://www.winformreports.co.uk/contactus.asp">https://www.winformreports.co.uk/contactus.asp</a></p>
+<p>PrintControls.NET &#169; 2019-2019 TMG Development Ltd</p>
+</body>
+</html>

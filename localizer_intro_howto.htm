@@ -1,0 +1,156 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN" >
+<HTML>
+ <HEAD>
+  <TITLE>Getting Started with Localizer for ASP.NET</TITLE>
+  <META NAME="GENERATOR" Content="Microsoft Visual Studio 7.0">
+  <style type="text/css"> <!-- body { font-family: Verdana, Arial, Helvetica, sans-serif; font-size: 8pt; color: #666666}
+	p { font-family: Verdana, Arial, Helvetica, sans-serif; font-size: 8pt; color: #666666 ; line-height: 12pt}
+	td { font-family: Verdana, Arial, Helvetica, sans-serif; font-size: 8pt; color: #666666 }
+	a:link { color:#6699FF; text-decoration:none; font-family: Verdana, Arial, Helvetica, sans-serif; font-size: 8pt}
+	a:visited { color:#6699FF; text-decoration:none; font-family: Verdana, Arial, Helvetica, sans-serif; font-size: 8pt}
+	a:active { color:#6699FF; text-decoration:underline; font-family: Verdana, Arial, Helvetica, sans-serif; font-size: 8pt}
+	a:hover { color:#6699FF; text-decoration:underline; font-family: Verdana, Arial, Helvetica, sans-serif; font-size: 8pt}
+	BR.page  { page-break-after: always }
+	--></style>
+ <meta https-equiv="Content-Type" content="text/html; charset=iso-8859-1"></HEAD>
+ <BODY bgcolor="#ffffff">
+  
+<h1><b><font size="4">Getting Started with Localizer for ASP.NET</font></b> </h1>
+  
+<P>Localizer for ASP.NET from <a href="https://www.wikipedia.org" target="_blank">TMG 
+  Development Ltd</a> extends the Microsoft Visual Studio .NET design environment 
+  to give design time support for creating localized versions of your ASP.NET 
+  WebForms.</P>
+<h3><strong>Overview</strong></h3>
+  
+<P>In this document we will outline the basic steps necessary to produce an internationalized 
+  version of your web application using Localizer.</P>
+<P> We're going to create a very simple web application that consists of a typical 
+  'Contact Us' page, and then show how we add a Localizer component, customize 
+  the text for a couple of languages and set localizer so that it automatically 
+  delivers a page in the chosen language.<br class="page">
+</P>
+<h3>Using Localizer at Design Time</h3>
+  
+<p>To start with, we've created a basic page with a number of WebControls to make 
+  up our Contact Us page. </p>
+<p><strong>Note</strong> that in order for Localizer to be able to localize the 
+  properties of a control it must be WebControl based, because at runtime Localizer 
+  will need to dynamically set the localized version of the property into the 
+  control from server-side code. </p>
+<p>So on this form we have some Labels (System.Web.UI.WebControls.Label), TextBoxes 
+  (System.Web.UI.WebControls.TextBox) and a submit Button (System.Web.UI.WebControls.Button). 
+  We've also added some Validators (System.Web.UI.WebControls.RequiredFieldValidator 
+  and System.Web.UI.WebControls.ValidationSummary).</p>
+<p><img src="localizer_intro_howto%20images/Inital%20Form.gif" width="702" height="606"><br>
+</p>
+<br class="page">
+<p>At the moment none of the properties of the web controls on the form are stored 
+  in a .resx file - they are all stored in the HTML of the ContactUs.aspx page. 
+</p>
+<p>In order to be able to build some culture-specific satellite resource assemblies 
+  so that we can load localized resources dynamically at runtime, we need to somehow 
+  get all the properties we want to localize out of the aspx and in to the resx. 
+  This process will be familiar to Windows Forms programmers because this is exactly 
+  what the Windows Form's Localizable property does. As soon as you mark a Windows 
+  Form as Localizable by setting Localizable = true, the design environment ensures 
+  that all localizable properties are serialized out to a resx file rather than 
+  into the Forms designer code section.</p>
+<p>Out of the box, this localization feature is not available for Web Forms. So 
+  if you want to produce a localized Web Forms application you have to do all 
+  .resx file creation manually. For even a small site this rapidly becomes a daunting 
+  task, see the GotDotNet site for details: <a href="https://samples.gotdotnet.com/quickstart/aspplus/doc/resourcefiles.aspx">https://samples.gotdotnet.com/quickstart/aspplus/doc/resourcefiles.aspx</a>.</p>
+<p>This is where Localizer for ASP.NET comes in. It's a standard component that 
+  sits in the Visual Studio Component Tray and extends your Web Form to provide 
+  the same localization features that Windows Forms programmers have become used 
+  to.</p>
+<p>So, on with our sample page... we drag a Localizer onto the page and it appears 
+  in the component tray:</p>
+<p><img src="localizer_intro_howto%20images/Localizer%20added.gif" width="702" height="606"></p>
+<br class="page">
+<p>We can see the resx file entries created by Localizer if we click the 'Show 
+  All Files' button <img src="localizer_intro_howto%20images/ShowAllBtn.gif" width="21" height="20"> 
+  on the Solution Explorer toolbar and drill down into the files under ContactUs.aspx 
+  to ContactUs.aspx.resx. Notice when we open this resx file how Localizer has 
+  added entries for all the properties on the various controls it recognizes as 
+  Localizable:</p>
+<p><img src="localizer_intro_howto%20images/Form%20resx.gif" width="702" height="606"></p>
+<br class="page">
+<p>Now all that remains is to switch the Localizer language, and enter some localized 
+  versions of the text. </p>
+<p>To switch language, we select the Localizer1 component in the tray and view 
+  its properties. From the Language property dropdown we select Japanese (Note 
+  how a Japanese resx file, ContactUs.aspx.ja.resx, is immediately created under 
+  ContactUs.aspx in the Solution Explorer):</p>
+<p><img src="localizer_intro_howto%20images/Localizer%20Select%20Japanese.gif" width="702" height="606"></p>
+<br class="page">
+<p>Filling in the Japanese text:</p>
+<p><img src="localizer_intro_howto%20images/Ja%20Form.gif" width="702" height="606"></p>
+<br class="page">
+<p>And again for Spanish:</p>
+<p><img src="localizer_intro_howto%20images/Es%20Form.gif" width="702" height="606"></p>
+<p>We can switch backwards and forwards between languages in the design environment, 
+  and the resx files are automatically kept up to date with any changes we make. 
+</p>
+<p><strong>Note</strong>: the standard process of fallback to the Invariant culture 
+  resources always operates, i.e. if we don't supply a localized version of a 
+  property then Localizer will use the invariant resource value, both for display 
+  in the designer, and at runtime.</p>
+<br class="page">  
+<h3>Building the Project</h3>
+<p>If we now build the project, we will see the satellite resource assemblies 
+  generated in their correct locations under the bin folder:</p>
+<p><img src="localizer_intro_howto%20images/SolExp%20Assemblies.gif" width="272" height="287"></p>
+<p>This is enough now to go on and build a localized site, all we would need to 
+  do is write code to set the thread's <strong>CurrentUICulture</strong> and call 
+  the <strong>Localizer1.Localize</strong> method. </p>
+<br class="page">
+<p>However, instead of doing this we will use the <strong>CulturePicker</strong> 
+  control supplied with Localizer to prompt the user with the available languages. 
+  CulturePicker provides a design time UI for configuration, and manages the process 
+  of setting the <strong>CurrentUICulture</strong> at runtime. </p>
+<p>We drop a CulturePicker onto the Form (top right hand side):</p>
+
+<p><img src="localizer_intro_howto%20images/Form%20CulturePicker.gif" width="702" height="606"></p>
+<br class="page">
+<p>Selecting CulturePicker's <strong>Items</strong> property we add a collection 
+  item for the invariant, Japanese and Spanish cultures. Each item we specify 
+  has a text string to display and a Culture to set when it is selected. (Note 
+  that Localizer is capable of Localizing the text strings in the CulturePicker 
+  as well if required, but we won't show this here).</p>
+<p><img src="localizer_intro_howto%20images/CulturePicker%20Editor.gif" width="480" height="364"></p>
+<br class="page">
+<h3>Running the Web Application</h3>
+<p>Now we've added the CulturePicker, the user has a way to select the language 
+  they want to view the page in at runtime. </p>
+<p>The final piece in the jigsaw is to make sure that CulturePicker posts back 
+  when a selection is made. To do this set its AutoPostBack property to true. 
+  Then run the application by hitting F5 to see the results...</p>
+<p>This shows the validators in action when we try and click 'Send Message' without 
+  filling in any of the required text:</p>
+<p><img src="localizer_intro_howto%20images/Inv%20Runtime.gif" width="587" height="599"></p>
+<br class="page">
+<p>Then we switch to Japanese and try again:</p>
+<p><img src="localizer_intro_howto%20images/Ja%20Runtime.gif" width="587" height="599"></p>
+<br class="page">
+<p>And finally Spanish:</p>
+<p><img src="localizer_intro_howto%20images/Es%20Runtime.gif" width="587" height="599"></p>
+<h3><strong>Summary</strong></h3>
+  
+<p>We've shown how Localizer extends the Visual Studio design time environment 
+  to provide Localization support for Web Forms, extending through to creating 
+  the resx files automatically and building the necessary satellite assemblies. 
+  Combined with the CulturePicker control for runtime language selection, Localizer 
+  provides all you need to produce a fully internationalized Web Application.</p>
+  
+<p>To try a <strong>free trial version</strong> of Localizer please visit the 
+  WinformReports website at <a href="https://www.winformreports.co.uk" target="_blank"> 
+  https://www.winformreports.co.uk</a></p>
+  <p>
+   <!-- #BeginDate format:Am1 -->June 19, 2019<!-- #EndDate -->
+   <br>
+   &copy; 2002-2019 <a href="https://www.wikipedia.org" target="_blank">TMG 
+    Development Ltd </a>
+  </p>
+ </BODY>
+</HTML>

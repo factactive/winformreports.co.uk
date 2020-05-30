@@ -1,0 +1,646 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN" >
+<HTML>
+ <HEAD>
+  <TITLE>Creating a Custom Table Style for ListView Printing using PrintAdapters for .NET</TITLE>
+  <META NAME="GENERATOR" Content="Microsoft Visual Studio 7.0">
+  <style type="text/css"> <!-- body { font-family: Verdana, Arial, Helvetica, sans-serif; font-size: 8pt; color: #666666}
+	p { font-family: Verdana, Arial, Helvetica, sans-serif; font-size: 8pt; color: #666666 ; line-height: 12pt}
+	td { font-family: Verdana, Arial, Helvetica, sans-serif; font-size: 8pt; color: #666666 }
+	a:link { color:#6699FF; text-decoration:none; font-family: Verdana, Arial, Helvetica, sans-serif; font-size: 8pt}
+	a:visited { color:#6699FF; text-decoration:none; font-family: Verdana, Arial, Helvetica, sans-serif; font-size: 8pt}
+	a:active { color:#6699FF; text-decoration:underline; font-family: Verdana, Arial, Helvetica, sans-serif; font-size: 8pt}
+	a:hover { color:#6699FF; text-decoration:underline; font-family: Verdana, Arial, Helvetica, sans-serif; font-size: 8pt}
+	--></style>
+ <meta https-equiv="Content-Type" content="text/html; charset=iso-8859-1"></HEAD>
+ <BODY bgcolor="#ffffff">
+  <h1><b><font size="4">Creating a Custom Table Style for Printing using 
+     PrintAdapters for .NET</font></b>
+  </h1>
+  <P>The PrintAdapters library provides a set of components that enable you to 
+   print some of the more common scrollable controls in the .NET Windows Forms 
+   control library: ListView, TreeView and RichTextBox. The features provided by 
+   PrintListView are also available in a similar component that can print any 
+   DataTable.</P>
+  <h3><strong>Overview</strong></h3>
+  <P>This how-to document will focus on working with just one of the PrintAdapters 
+   suite: PrintListView. PrintListView provides very good design time integration 
+   with Visual Studio that allows you to edit the style to be used when printing 
+   out your ListView, but it can also be accessed programmatically. We will 
+   develop a custom style using the designers, and then show how the same effect 
+   can be created from code.</P>
+  <h3>Using the PrintListView Designers</h3>
+  <p>As a basis for these examples we will take the <strong>SimpleListView</strong>
+   sample provided with the PrintAdapters library, which provides us with a 
+   populated ListView to work with. Here's SimpleListView in the Visual Studio 
+   designer:</p>
+  <p><img src="TableStyle%20Howto%20Images/VS%20Main%20Proj.gif" width="386" height="293"></p>
+  <p>If we hit F5 to run the project we see:</p>
+  <p><img src="TableStyle%20Howto%20Images/SimpleListView%20Form.gif" width="260" height="180"></p>
+  <p>Checking 'Landscape' and clicking 'Print Preview' gives us the following 
+   print preview:</p>
+  <p><img src="TableStyle%20Howto%20Images/Normal%20PrintPreview.gif" width="355" height="258">
+  </p>
+  <p>Note that because we left the radio button 'Create Style from ListView 
+   Settings' selected, PrintListView has automatically created a style that 
+   mirrors the current ListView appearance, including Font settings, Colors, 
+   Column widths and icon and checkbox settings.</p>
+  <p>If we now return to Visual Studio, and add another PrintPreviewDialog and 
+   PrintListView component to the Form. Then:</p>
+  <ol>
+   <li>
+    Set the new <strong>PrintPreviewDialog's</strong> <strong>Document</strong> property 
+    to reference the new PrintListView component</li>
+   <li>
+    Set the new <strong>PrintListView's</strong> <strong>ListViewControl</strong> property 
+    to reference the <strong>ListView</strong> control
+   </li>
+   <li>
+    Set the <strong>PrintListView.CustomStyle</strong> property to <strong>True</strong>. 
+    This allows us to specify a custom TableStyle, otherwise the TableStyle would 
+    automatically be recreated from the ListView settings at print preview time.</li>
+   <li>
+    Add a new button to the Form, and add a click handler with the following code:<br>
+    <br>
+    Private Sub Button1_Click(ByVal sender As System.Object, ByVal e As 
+    System.EventArgs) Handles Button1.Click<br>
+    &nbsp;&nbsp;Me.PrintPreviewDialog2.ShowDialog()<br>
+    End Sub</li>
+  </ol>
+  <p>Hit F5 and run this, and when you click on the new button you'll see the 
+   TableStyle in action (it is still the one picked up from ListView settings as 
+   in the Print Preview above).</p>
+  <h4><strong>Resetting the TableStyle</strong></h4>
+  <p>Now, right click the <strong>TableStyle</strong> property in the Property 
+   grid and select <strong>Reset</strong>, then click the ellipsis ('...') to the 
+   right of the property to bring up the TableStyle editor. Note that the 
+   TableStyle in the preview has reverted to a basic grid as a result of the 
+   reset:</p>
+  <p><img src="TableStyle%20Howto%20Images/TS%20Editor%20after%20reset.gif" width="268" height="196"></p>
+  <p>You can experiment with applying one of the predefined styles here by 
+   selecting from the list and clicking OK. When you run the sample and generate a 
+   print preview you should see the style applied to the printout.</p>
+  <p>We are going to build a style from scratch using the TableStyle designers 
+   however, so reset your TableStyle again to get back to the basic grid. Bring up 
+   the TableStyle designer and click on the 'Advanced' tab:</p>
+  <p><img src="TableStyle%20Howto%20Images/TS%20Editor%20advanced.gif" width="402" height="294"></p>
+  <h4>&nbsp;</h4>
+  <h4><strong>TableStyle BackGrounder</strong></h4>
+  <p>Before we go any further; a bit of background about how a TableStyle is built 
+   up. It has a <strong>BorderStyle</strong>, which can be edited in the designer 
+   by clicking on the BorderStyle property. This allows you to independently set 
+   the style, color and thickness of each edge of the border. This editor is used 
+   to edit the border of individual cells in a table as well as the border of the 
+   entire table area.</p>
+  <p><img src="TableStyle%20Howto%20Images/BS%20Editor%20default.gif" width="281" height="221"></p>
+  <p>The <strong>TableStyle</strong> also has the following properties:</p>
+  <table width="100%" border="1" cellpadding="0" cellspacing="0" bordercolor="#000000">
+   <tr>
+    <td><table width="100%" border="0" cellpadding="5" cellspacing="0">
+      <tr align="left" valign="top" bgcolor="#CCCCCC" class="bannertitle">
+       <td><b> Property</b></td>
+       <td><b> <img src="shim.gif" width="10" height="10"></b></td>
+       <td><b> Type</b></td>
+       <td><b> <img src="shim.gif" width="10" height="10"> </b>
+       </td>
+       <td><b> Description</b></td>
+      </tr>
+      <tr align="left" valign="top" bgcolor="#FFFFFF">
+       <td>
+        AutoDetectHeadings</td>
+       <td>&nbsp;
+       </td>
+       <td>
+        Boolean</td>
+       <td>&nbsp;
+       </td>
+       <td>
+        <p>Indicates whether column heading text is detected automatically from ListView 
+         column headings, or specified via a ColumnHeader in the the Columns collection 
+         or the ColumnDefault. Setting true for this value will override any text 
+         specified in the corresponding ColumnHeader or the ColumnDefault. The column 
+         widths specified in the ColumnHeaders will be honored though even if the text 
+         is picked up automatically from the ListView.</p>
+       </td>
+      </tr>
+      <tr align="left" valign="top" bgcolor="#FFFFFF">
+       <td colspan="5"><b><img src="shim.gif" width="10" height="10"></b></td>
+      </tr>
+      <tr align="left" valign="top" bgcolor="#FFFFFF">
+       <td>
+        BorderStyle
+       </td>
+       <td>&nbsp;
+       </td>
+       <td>
+        BorderStyle</td>
+       <td>&nbsp;
+       </td>
+       <td>
+        <p>Specifies the style of the border drawn around the bounding edge of the 
+         table.</p>
+       </td>
+      </tr>
+      <tr align="left" valign="top" bgcolor="#FFFFFF">
+       <td colspan="5"><b><img src="shim.gif" width="10" height="10"></b></td>
+      </tr>
+      <tr align="left" valign="top" bgcolor="#FFFFFF">
+       <td>
+        ColumnDefault</td>
+       <td>&nbsp;
+       </td>
+       <td>
+        ColumnHeader</td>
+       <td>&nbsp;
+       </td>
+       <td>
+        <p>Allows you to specify the default text and column width to use when column 
+         headings aren't being auto detected with AutoDetectHeadings, and aren't 
+         specified in the Columns collection.</p>
+       </td>
+      </tr>
+      <tr align="left" valign="top" bgcolor="#FFFFFF">
+       <td colspan="5"><b><img src="shim.gif" width="10" height="10"></b></td>
+      </tr>
+      <tr align="left" valign="top" bgcolor="#FFFFFF">
+       <td>
+        Columns</td>
+       <td>&nbsp;
+       </td>
+       <td>
+        ColumnHeaderCollection</td>
+       <td>&nbsp;
+       </td>
+       <td>
+        <p>ColumnHeader objects in this list are applied to columns in the table 
+         starting from the left hand side, when AutoDetectHeadings isn't set. For 
+         example, if you add two items to this collection the first two columns in the 
+         table will have the heading text and width you specify, and any subsequent 
+         columns will be based on the settings in ColumnDefault.</p>
+       </td>
+      </tr>
+      <tr align="left" valign="top" bgcolor="#FFFFFF">
+       <td colspan="5"><b><img src="shim.gif" width="10" height="10"></b></td>
+      </tr>
+      <tr align="left" valign="top" bgcolor="#FFFFFF">
+       <td>
+        RowStyles</td>
+       <td>&nbsp;
+       </td>
+       <td>
+        RowStyleCollection</td>
+       <td>&nbsp;
+       </td>
+       <td>
+        <p>Each row in the table can have its own RowStyle. By default the RowStyles you 
+         add to the collection are used as follows: the first one is used for the header 
+         row only, subsequent ones are used for data rows. If there are more data rows 
+         in the table than RowStyles, the RowStyle used loops back to the first (non- 
+         header) one. For example, if you add three RowStyles - the first is used for 
+         the header row, the second for all odd rows and the third for all even rows. If 
+         you add a further RowStyle you get a repeating pattern of three styles in the 
+         body of the table.<br>
+         If this default behavior is not what you want, you can handle the 
+         PrintListView.BeginRow event and set the RowStyle to be used for the row based 
+         on some other criteria like the data values in the row. For example you could 
+         use a highlighting style to pick out rows where values were negative etc.</p>
+       </td>
+      </tr>
+      <tr align="left" valign="top" bgcolor="#FFFFFF">
+       <td colspan="5"><b><img src="shim.gif" width="10" height="10"></b></td>
+      </tr>
+      <tr align="left" valign="top" bgcolor="#FFFFFF">
+       <td>
+        SnapBordersToData</td>
+       <td>&nbsp;
+       </td>
+       <td>
+        Boolean</td>
+       <td>&nbsp;
+       </td>
+       <td>This flag indicates whether the border is border drawn around the bounding 
+        edge of the table, or the bounding edge of the data. For example, when 
+        PrintListView behaves as a PrintDocument the edge of the table is considered to 
+        be the MarginBounds of the printed page, setting this value true in this 
+        situation would mean that the border would be drawn around the edge of the 
+        table, whatever size that was, rather than round the MarginBounds rectangle.</td>
+      </tr>
+     </table>
+    </td>
+   </tr>
+  </table>
+  <p>So we see from the above that each data row in the table can have a RowStyle. 
+   The first RowStyle in the RowStyleCollection is always applied to the header 
+   row, and subsequent RowStyles are applied in rotation to the data rows in the 
+   table. What does a RowStyle consist of?</p>
+  <p><strong>RowStyle Properties</strong></p>
+  <table width="100%" border="1" cellpadding="0" cellspacing="0" bordercolor="#000000">
+   <tr>
+    <td><table width="100%" border="0" cellpadding="5" cellspacing="0">
+      <tr align="left" valign="top" bgcolor="#CCCCCC" class="bannertitle">
+       <td><b> Property</b></td>
+       <td><b> <img src="shim.gif" width="10" height="10"></b></td>
+       <td><b> Type</b></td>
+       <td><b> <img src="shim.gif" width="10" height="10"> </b>
+       </td>
+       <td><b> Description</b></td>
+      </tr>
+      <tr align="left" valign="top" bgcolor="#FFFFFF">
+       <td>
+        CellStyles</td>
+       <td>&nbsp;
+       </td>
+       <td>
+        CellStyleCollection</td>
+       <td>&nbsp;
+       </td>
+       <td>
+        <p>Specifies the collection of named styles that can be applied to cells in this 
+         row.</p>
+       </td>
+      </tr>
+      <tr align="left" valign="top" bgcolor="#FFFFFF">
+       <td colspan="5"><b><img src="shim.gif" width="10" height="10"></b></td>
+      </tr>
+      <tr align="left" valign="top" bgcolor="#FFFFFF">
+       <td>
+        CellStyleMappings</td>
+       <td>&nbsp;
+       </td>
+       <td>
+        CellStyleMappingCollection</td>
+       <td>&nbsp;
+       </td>
+       <td>
+        <p>Specifies a collection of CellStyleMapping objects, which map a CellStyle 
+         name to a column index. The CellStyleMapping.ColumnIndexNumbering property 
+         allows you to specify that the specified index is counted from either the left 
+         hand column or the right.</p>
+       </td>
+      </tr>
+      <tr align="left" valign="top" bgcolor="#FFFFFF">
+       <td colspan="5"><b><img src="shim.gif" width="10" height="10"></b></td>
+      </tr>
+      <tr align="left" valign="top" bgcolor="#FFFFFF">
+       <td>
+        CellStyleDefault</td>
+       <td>&nbsp;
+       </td>
+       <td>
+        CellStyle</td>
+       <td>&nbsp;
+       </td>
+       <td>
+        <p>This specifies the default CellStyle to use for cells that do not have a 
+         specific CellStyle allocated to them by a CellStyleMapping entry in the 
+         CellStyleMappings. If no specific styles are added to the CellStyles collection 
+         all the cells in the row will have this style.</p>
+       </td>
+      </tr>
+     </table>
+    </td>
+   </tr>
+  </table>
+  <p>Finally we reach the individual <strong>CellStyle</strong>, which has the 
+   following properties:</p>
+  <table width="100%" border="1" cellpadding="0" cellspacing="0" bordercolor="#000000">
+   <tr>
+    <td><table width="100%" border="0" cellpadding="5" cellspacing="0">
+      <tr align="left" valign="top" bgcolor="#CCCCCC" class="bannertitle">
+       <td><b> Property</b></td>
+       <td><b> <img src="shim.gif" width="10" height="10"></b></td>
+       <td><b> Type</b></td>
+       <td><b> <img src="shim.gif" width="10" height="10"> </b>
+       </td>
+       <td><b> Description</b></td>
+      </tr>
+      <tr align="left" valign="top" bgcolor="#FFFFFF">
+       <td>
+        Name</td>
+       <td>&nbsp;
+       </td>
+       <td>
+        String</td>
+       <td>&nbsp;
+       </td>
+       <td>
+        <p>Specifies the name used to identify the CellStyle in CellStyleMappings.</p>
+       </td>
+      </tr>
+      <tr align="left" valign="top" bgcolor="#FFFFFF">
+       <td colspan="5"><b><img src="shim.gif" width="10" height="10"></b></td>
+      </tr>
+      <tr align="left" valign="top" bgcolor="#FFFFFF">
+       <td>
+        Font</td>
+       <td>&nbsp;
+       </td>
+       <td>
+        Font</td>
+       <td>&nbsp;
+       </td>
+       <td>
+        <p>Specifies the Font to be used for any text drawn in the cell.</p>
+       </td>
+      </tr>
+      <tr align="left" valign="top" bgcolor="#FFFFFF">
+       <td colspan="5"><b><img src="shim.gif" width="10" height="10"></b></td>
+      </tr>
+      <tr align="left" valign="top" bgcolor="#FFFFFF">
+       <td>
+        BackColor</td>
+       <td>&nbsp;
+       </td>
+       <td>
+        Color</td>
+       <td>&nbsp;
+       </td>
+       <td>
+        <p>Specifies the background fill color of the cell.</p>
+       </td>
+      </tr>
+      <tr align="left" valign="top" bgcolor="#FFFFFF">
+       <td colspan="5"><b><img src="shim.gif" width="10" height="10"></b></td>
+      </tr>
+      <tr align="left" valign="top" bgcolor="#FFFFFF">
+       <td>
+        ForeColor</td>
+       <td>&nbsp;
+       </td>
+       <td>
+        Color</td>
+       <td>&nbsp;
+       </td>
+       <td>
+        <p>Specifies the foreground color to be used for any content if the cell (e.g. 
+         text).</p>
+       </td>
+      </tr>
+      <tr align="left" valign="top" bgcolor="#FFFFFF">
+       <td colspan="5"><b><img src="shim.gif" width="10" height="10"></b></td>
+      </tr>
+      <tr align="left" valign="top" bgcolor="#FFFFFF">
+       <td>
+        BorderStyles</td>
+       <td>&nbsp;
+       </td>
+       <td>
+        BorderStyle</td>
+       <td>&nbsp;
+       </td>
+       <td>
+        <p>This specifies borders to be drawn around the individual cell.</p>
+       </td>
+      </tr>
+     </table>
+    </td>
+   </tr>
+  </table>
+  <h4>&nbsp;</h4>
+  <h4><strong>Building a Custom Style</strong></h4>
+  <p>Now that may seem pretty complicated, but we're going to show that we can 
+   produce quite complicated results with just a little bit of clicking in the 
+   designer. First, back to our project... we have a TableStyle which has been 
+   reset to the default i.e. no style settings set at all.</p>
+  <p>Starting with the designer in advanced mode again:</p>
+  <p><img src="TableStyle%20Howto%20Images/TS%20Editor%20advanced.gif" width="402" height="294"></p>
+  <p>Click on the RowStyles property to bring up the editor:</p>
+  <p><img src="TableStyle%20Howto%20Images/RS%20Editor%201Row.gif" width="365" height="286"></p>
+  <p>Expand <strong>CellStyleDefault</strong>, and pick a <strong>BackGround</strong>
+   color of LightGray and <strong>Font</strong> of Verdana 8pt:</p>
+  <p><img src="TableStyle%20Howto%20Images/RS%20Editor%201Row%20CellStyleDefault.gif" width="365" height="286"></p>
+  <p>On the same dialog, click on <strong>BorderStyles</strong> to bring up the 
+   border style editor, select <strong>Color</strong> Gray, then use the buttons 
+   around the edge of the <strong>Preview</strong> to turn the line for that edge 
+   on or off. Turn all but the bottom line off (<em>Tip:</em> to apply the new 
+   color and thickness settings to an edge, turn the line off, then back on again 
+   with the new settings):</p>
+  <p><img src="TableStyle%20Howto%20Images/BS%20Editor%20gray%20line.gif" width="281" height="221"></p>
+  <p>Clicking OK until we return to the TableStyle editor, where we can see the 
+   effects of our editing:</p>
+  <p><img src="TableStyle%20Howto%20Images/TS%20Editor%20header%20row.gif" width="402" height="294"></p>
+  <p>Now we'll add two more <strong>RowStyles</strong>, one with a <strong>BackColor</strong>
+   of Wheat, and the other with a BackColor of OldLace. Turn off all the edges on 
+   the <strong>BorderStyle</strong> for both.
+  </p>
+  <p>Note the way that the two new RowStyles are repeatedly applied to the rows of 
+   the table, while the first RowStyle is only ever used for the first (header) 
+   row:</p>
+  <p><img src="TableStyle%20Howto%20Images/TS%20Editor%20body%20rows.gif" width="402" height="294"></p>
+  <p>Lets make the <strong>Font</strong> of the left hand column <strong>Bold</strong>, 
+   and put a vertical line down between it and the second column. To do this we 
+   need to create a <strong>custom</strong> <strong>CellStyle</strong> for the 
+   first column in each of the <strong>RowStyles</strong> we've created.
+  </p>
+  <ol>
+   <li>
+    Starting with the header row, bring up the RowStyles editor
+   </li>
+   <li>
+    Select RowStyle 0 then click on its <strong>CellStyles</strong> collection to 
+    bring up the CellStyles editor</li>
+   <li>
+    <strong>Add</strong> a new CellStyle and expand its properties</li>
+   <li>
+    First we need to duplicate the settings we have already made for this row 
+    (Color=LightGray, Font=Verdana,8pt, BorderStyle=BottomEdge:Gray)
+   </li>
+   <li>
+    Then we'll add the following settings: make the Font <strong>Bold</strong>, add 
+    a Gray right-hand edge line to the <strong>BorderStyle</strong></li>
+   <li>
+    Finally give this style a <strong>Name</strong>, 'Header LHS':</li>
+  </ol>
+  <p><img src="TableStyle%20Howto%20Images/CS%20Editor%20Header%20LHS.gif" width="365" height="286"></p>
+  <p>&nbsp;</p>
+  <ol>
+   <li>
+    Now OK the CellStyles editor, and click to open the CellStyleMappings editor.</li>
+   <li>
+    <strong>Add</strong> a new CellStyleMapping.</li>
+   <li>
+    Click on <strong>CellStyleName</strong>, and pick or type 'Header LHS':</li>
+  </ol>
+  <p>Note: the <strong>ColumnIndexNumbering</strong> property of <strong>CellStyleMapping</strong>
+   can hold values of either <strong>FromLeft</strong> or <strong>FromRight</strong>. 
+   We've left this at the default of FromLeft, but if we selected FromRight the 
+   'Header LHS' style would be applied to the rightmost column in the final table. 
+   This can be useful if you're defining a TableStyle and want to highlight the 
+   righthand column in some way, but you don't yet know how many columns there 
+   will be in the table.</p>
+  <p><img src="TableStyle%20Howto%20Images/CSM%20Editor%20Header%20LHS.gif" width="386" height="287"></p>
+  <p>Click OK, and return to the TableStyle editor:</p>
+  <p><img src="TableStyle%20Howto%20Images/TS%20Editor%20header%20row%20custom%20CellStyle.gif" width="402" height="294"></p>
+  <p>Repeat this process to add a CellStyle and CellStyleMapping to the other two 
+   RowStyles and we have:</p>
+  <p><img src="TableStyle%20Howto%20Images/TS%20Editor%20all%20rows%20custom%20CellStyle.gif" width="402" height="294"></p>
+  <p>As a final touch set <strong>SnapBordersToData</strong> to True:</p>
+  <p><img src="TableStyle%20Howto%20Images/TS%20Editor%20all%20rows%20custom%20SnapBorder.gif" width="402" height="294"></p>
+  <p>If we now OK this and run the application, clicking on our new button on the 
+   main form gives us a print preview in the style we have just designed:</p>
+  <p><img src="TableStyle%20Howto%20Images/TableStyle%20PrintPreview.gif" width="768" height="558"></p>
+  <p>&nbsp;</p>
+  <h3><strong>Creating TableStyles Programmatically</strong></h3>
+  <p>Now that we've been through the process of designing a style using the 
+   PrintAdapters designers, doing the same from code will make a lot more sense. 
+   Incidentally, if you just want to pick up the code that represents a certain 
+   style you have designed via the UI as a starting point, you can copy the code 
+   section for the PrintListView.TableStyle from the &quot;Windows Form Designer 
+   generated code&quot; section of your form. This is possible because 
+   PrintAdapters serializes out its state into code using the .NET CodeDom 
+   serialization mechanism.</p>
+  <p>Most of the following code is self-explanatory. If you're not familiar with 
+   the array initializer construct in VB.NET it can look a bit strange - 
+   basically, to instantiate and populate an array in one go we can use:</p>
+  <p>
+   Dim arr As String() = New String() {&quot;one&quot;, &quot;two&quot;, 
+   &quot;three&quot;}</p>
+  <p>Apart from that, the process we're going through in code is exactly the same 
+   as the one we went through in the designer and should have identical results.</p>
+  <p>Putting the following VB.NET code in our button click handler will bypass the 
+   TableStyle we set up in the designer, and replace it with the one we're coding 
+   manually.
+  </p>
+  <p>
+   <font color="#339933">' Need to make sure PrintListView knows we're setting a 
+    custom TableStyle</font><br>
+   Me.PrintListView2.CustomStyle = True</p>
+  <p>
+   <font color="#339933">' Create the standard Fonts we will use throughout the 
+    table</font><br>
+   Dim fontHeader As Font = New Font(&quot;Verdana&quot;, 8.25!, 
+   System.Drawing.FontStyle.Regular)<br>
+   Dim fontHeaderBold As Font = New Font(&quot;Verdana&quot;, 8.25!, 
+   System.Drawing.FontStyle.Bold)<br>
+   Dim fontBody As Font = New Font(&quot;Microsoft Sans Serif&quot;, 8.0!)<br>
+   Dim fontBodyBold As Font = New Font(&quot;Microsoft Sans Serif&quot;, 8.0!, 
+   System.Drawing.FontStyle.Bold)</p>
+  <p>
+   <font color="#339933">' Some standard LineStyle objects for the BorderStyles</font><br>
+   Dim lineNone As TMGDevelopment.Drawing.LineStyle = New 
+   TMGDevelopment.Drawing.LineStyle(Color.Empty, 
+   Drawing.Drawing2D.DashStyle.Solid, False, 1.0!, 0.0!, 0.0!)<br>
+   Dim lineGray As TMGDevelopment.Drawing.LineStyle = New 
+   TMGDevelopment.Drawing.LineStyle(Color.Gray, Drawing.Drawing2D.DashStyle.Solid, 
+   True, 1.0!, 0.0!, 0.0!)<br>
+   Dim lineBlack As TMGDevelopment.Drawing.LineStyle = New 
+   TMGDevelopment.Drawing.LineStyle(Color.Black, 
+   Drawing.Drawing2D.DashStyle.Solid, True, 1.0!, 0.0!, 0.0!)</p>
+  <p>
+   <font color="#339933">' The BorderStyles for our header row, and special styles 
+    for the left hand column</font><br>
+   Dim bsGrayBottom As TMGDevelopment.Drawing.BorderStyle = New 
+   TMGDevelopment.Drawing.BorderStyle(lineNone, lineGray, lineNone, lineNone)<br>
+   Dim bsGrayBottomRHS As TMGDevelopment.Drawing.BorderStyle = New 
+   TMGDevelopment.Drawing.BorderStyle(lineNone, lineGray, lineNone, lineGray)<br>
+   Dim bsGrayRHS As TMGDevelopment.Drawing.BorderStyle = New 
+   TMGDevelopment.Drawing.BorderStyle(lineNone, lineNone, lineNone, lineGray)<br>
+   Dim bsBlack As TMGDevelopment.Drawing.BorderStyle = 
+   TMGDevelopment.Drawing.BorderStyle.BorderSingle()</p>
+  <p>
+   <font color="#339933">' The default CellStyle for the header row</font><br>
+   Dim csHeaderDefault As TMGDevelopment.PrintAdapters.CellStyle = New 
+   TMGDevelopment.PrintAdapters.CellStyle(fontHeader, Color.LightGray, 
+   Color.Black, bsGrayBottom)</p>
+  <p>
+   <font color="#339933">' A CellStyle with a Wheat background for the table body 
+    row 1</font><br>
+   Dim csWheatDefault As TMGDevelopment.PrintAdapters.CellStyle = New 
+   TMGDevelopment.PrintAdapters.CellStyle(fontBody, Color.Wheat, Color.Black, 
+   TMGDevelopment.Drawing.BorderStyle.BorderNone())</p>
+  <p>
+   <font color="#339933">' A CellStyle with a OldLace background for the table body 
+    row 2</font><br>
+   Dim csOldLaceDefault As TMGDevelopment.PrintAdapters.CellStyle = New 
+   TMGDevelopment.PrintAdapters.CellStyle(fontBody, Color.OldLace, Color.Black, 
+   TMGDevelopment.Drawing.BorderStyle.BorderNone())</p>
+  <p>
+   <font color="#339933">' A special CellStyle for the header row </font>
+   <br>
+   Dim csHeaderLHS As TMGDevelopment.PrintAdapters.CellStyle = New 
+   TMGDevelopment.PrintAdapters.CellStyle(&quot;csHeaderLHS&quot;, fontHeader, 
+   Color.LightGray, Color.Black, bsGrayBottomRHS)</p>
+  <p>
+   <font color="#339933">' A CellStyleMapping to associate the new CellStyle with 
+    the left hand column of the header row</font><br>
+   Dim csmHeader As TMGDevelopment.PrintAdapters.CellStyleMapping = New 
+   TMGDevelopment.PrintAdapters.CellStyleMapping(0, 
+   TMGDevelopment.PrintAdapters.ColumnIndexNumbering.FromLeft, 
+   &quot;csHeaderLHS&quot;)</p>
+  <p>
+   <font color="#339933">' A special CellStyle for the Wheat-colored row </font>
+   <br>
+   Dim csWheatLHS As TMGDevelopment.PrintAdapters.CellStyle = New 
+   TMGDevelopment.PrintAdapters.CellStyle(&quot;csWheatLHS&quot;, fontBody, 
+   Color.Wheat, Color.Black, bsGrayRHS)</p>
+  <p>
+   <font color="#339933">' A CellStyleMapping to associate the new CellStyle with 
+    the left hand column of the Wheat-colored row</font><br>
+   Dim csmWheat As TMGDevelopment.PrintAdapters.CellStyleMapping = New 
+   TMGDevelopment.PrintAdapters.CellStyleMapping(0, 
+   TMGDevelopment.PrintAdapters.ColumnIndexNumbering.FromLeft, 
+   &quot;csWheatLHS&quot;)</p>
+  <p>
+   <font color="#339933">' A special CellStyle for the OldLace-colored row </font>
+   <br>
+   Dim csOldLaceLHS As TMGDevelopment.PrintAdapters.CellStyle = New 
+   TMGDevelopment.PrintAdapters.CellStyle(&quot;csOldLaceLHS&quot;, fontBody, 
+   Color.OldLace, Color.Black, bsGrayRHS)</p>
+  <p>
+   <font color="#339933">' A CellStyleMapping to associate the new CellStyle with 
+    the left hand column of the OldLace-colored row</font><br>
+   Dim csmOldLace As TMGDevelopment.PrintAdapters.CellStyleMapping = New 
+   TMGDevelopment.PrintAdapters.CellStyleMapping(0, 
+   TMGDevelopment.PrintAdapters.ColumnIndexNumbering.FromLeft, 
+   &quot;csOldLaceLHS&quot;)</p>
+  <p>
+   <font color="#339933">' RowStyles for the 3 different types of row we're 
+    defining. Note each one takes the default CellStyle<br>
+    ' for the row, and then an array of CellStyles and an array of 
+    CellStyleMappings</font><br>
+   Dim rsHeader As TMGDevelopment.PrintAdapters.RowStyle = New 
+   TMGDevelopment.PrintAdapters.RowStyle(csHeaderDefault, Nothing, New 
+   TMGDevelopment.PrintAdapters.CellStyle() {csHeaderLHS}, New 
+   TMGDevelopment.PrintAdapters.CellStyleMapping() {csmHeader})<br>
+   Dim rsWheatBody As TMGDevelopment.PrintAdapters.RowStyle = New 
+   TMGDevelopment.PrintAdapters.RowStyle(csWheatDefault, Nothing, New 
+   TMGDevelopment.PrintAdapters.CellStyle() {csWheatLHS}, New 
+   TMGDevelopment.PrintAdapters.CellStyleMapping() {csmWheat})<br>
+   Dim rsOldLaceBody As TMGDevelopment.PrintAdapters.RowStyle = New 
+   TMGDevelopment.PrintAdapters.RowStyle(csOldLaceDefault, Nothing, New 
+   TMGDevelopment.PrintAdapters.CellStyle() {csOldLaceLHS}, New 
+   TMGDevelopment.PrintAdapters.CellStyleMapping() {csmOldLace})</p>
+  <p>
+   <font color="#339933">' Finally we construct the TableStyle giving it a name, 
+    and array of RowStyles, no column definitions,<br>
+    ' the outer BorderStyle and setting AutoDetectHeadings and SnapBordersToData 
+    true:</font><br>
+   Me.PrintListView2.TableStyle() = New 
+   TMGDevelopment.PrintAdapters.TableStyle(&quot;Hard-coded style1&quot;, New 
+   TMGDevelopment.PrintAdapters.RowStyle() {rsHeader, rsWheatBody, rsOldLaceBody}, 
+   Nothing, bsBlack, True, True)</p>
+  <p>
+   Me.PrintPreviewDialog2.ShowDialog()<br>
+  </p>
+  <h3><strong>Summary</strong></h3>
+  <p>We've shown how complex TableStyles can be built up in the designer, and also 
+   how to create the same effect through code. I hope this will give you an idea 
+   of the possibilities with the PrintAdapters library, particularly when you 
+   combine the style options above with events exposed by PrintListView such as 
+   the BeginRow event, which allows you to alter the RowStyle to be used by a 
+   given row before it is printed. With this you could adapt the display style to 
+   the data (such as showing all sales to a particular customer in a different 
+   color, or making the font bold when a value falls below a certain threshold 
+   etc). You can even combine the design-time definition of your RowStyles with 
+   runtime application of them in a small amount of custom code in the BeginRow 
+   event handler.</p>
+  <p>For more information about PrintAdapters, and other .NET solutions, please 
+   visit the WinformReports website at <a href="https://www.winformreports.co.uk" target="_blank">
+    https://www.winformreports.co.uk</a></p>
+  <p>
+   <!-- #BeginDate format:Am1 -->July 21, 2019<!-- #EndDate -->
+   <br>
+   &copy; 2002-2019 <a href="https://www.wikipedia.org" target="_blank">TMG 
+    Development Ltd </a>
+  </p>
+ </BODY>
+</HTML>

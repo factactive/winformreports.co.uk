@@ -1,0 +1,68 @@
+td {  font-family: Verdana, Arial, Helvetica, sans-serif; font-size: 8pt; color: #000000; font-weight: normal; line-height: normal}
+th {  font-family: Verdana, Arial, Helvetica, sans-serif; font-size: 8pt; color: #000000; font-weight: bold; line-height: normal}
+a:link    { color:#0062A4; text-decoration:none; font-family: Verdana, Arial, Helvetica, sans-serif; font-size: 8pt}
+a:visited { color:#0062A4; text-decoration:none; font-family: Verdana, Arial, Helvetica, sans-serif; font-size: 8pt}
+a:active  { color:#0062A4; text-decoration:underline; font-family: Verdana, Arial, Helvetica, sans-serif; font-size: 8pt}
+a:hover   { color:#0062A4; text-decoration:underline; font-family: Verdana, Arial, Helvetica, sans-serif; font-size: 8pt}
+p { font-family: Verdana, Arial, Helvetica, sans-serif; font-size: 8pt; }
+input       { color: gray; border: 1px solid; background: none;
+              font-family: Verdana, Arial, Helvetica, sans-serif; font-size: 8pt;
+              padding-left: 3; padding-top: 2; padding-bottom: 3; padding-right: 3; }
+select       { color: gray; border: 1px solid; background: none;
+              font-family: Verdana, Arial, Helvetica, sans-serif; font-size: 8pt;
+              padding-left: 3; padding-top: 2; padding-bottom: 3; padding-right: 3;}
+form {
+	margin:0
+}
+.widesp {  font-family: Verdana, Arial, Helvetica, sans-serif; font-size: 8pt; line-height: 14pt}
+.codefont { font-style: normal; font-size: 13px; font-weight: normal; color: black ; font-family: "Courier New";}
+.featurescolumn {
+	text-align: left;
+	font-family: Verdana, Arial, Helvetica, sans-serif;
+	font-size: 10px;
+	font-weight: normal;
+}
+.comparisontable {
+	width: 600px;
+	border: 1px solid #333333;
+}
+caption {
+	font-family: Verdana, Arial, Helvetica, sans-serif;
+	font-size: 12px;
+	font-weight: bold;
+	line-height: 20px;
+	text-align: center;
+	vertical-align: middle;
+}
+.productcolumn {
+	font-family: Verdana, Arial, Helvetica, sans-serif;
+	font-size: 10px;
+	border-left-width: 1px;
+	border-left-style: solid;
+	border-top-color: #CCCCCC;
+	border-right-color: #CCCCCC;
+	border-bottom-color: #CCCCCC;
+	border-left-color: #CCCCCC;
+	width: 75px;
+}
+.featureHeading {
+	font-family: Verdana, Arial, Helvetica, sans-serif;
+	font-size: 12px;
+	font-weight: bold;
+	line-height: 50px;
+	vertical-align: bottom;
+}
+.HowToHeading {
+	font-family: Verdana, Arial, Helvetica, sans-serif;
+	font-size: 16pt;
+	font-weight: bold;
+}
+.HowToSubHeading {
+	font-family: Verdana, Arial, Helvetica, sans-serif;
+	font-size: 12pt;
+	font-weight: bold;
+}
+.HowToPara {
+	font-family: Verdana, Arial, Helvetica, sans-serif;
+	font-size: 8pt;
+}
